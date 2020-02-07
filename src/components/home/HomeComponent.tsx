@@ -14,13 +14,21 @@ export class HomeComponent extends React.Component {
         return (
             <div>
                 <Navbar/>
-                <div className = "jumbotron text-center" style = {{backgroundColor: "white"}}>
+                <div className = "jumbotron text-center" 
+                style = {{backgroundColor: "white", 
+                //backgroundImage: "url(https://cdnb.artstation.com/p/assets/images/images/006/585/191/large/malte-madsen-spaceship-concept-refined-final.jpg?1499717461)",
+                backgroundSize: "100%",
+                backgroundAttachment: "fixed",
+                backgroundRepeat: "no-repeat"
+                
+        
+                }}>
                     <h1 className="display-4 text-danger" style = {{fontWeight: 800, fontSize: "90px"}}>SpacePals</h1>
-                    <p className="lead"><em>Enabling inter-planetary travels</em></p>
+                    <h1 className="lead">Enabling inter-planetary travels</h1>
                     <hr></hr>
-                    <blockquote className = "lead"><b>
-                    "It’s one small step for man, one giant leap for mankind."</b>
-                    <p className = "lead">_Neil Armstrong</p>
+                    <blockquote className = "lead"><h2>
+                    "It’s one small step for man, one giant leap for mankind."</h2>
+                    <h4 className = "lead">_Neil Armstrong</h4>
                     </blockquote>
 
                     <a className="btn btn-primary btn-lg" href="/login" data-toggle="modal" role="button">Login</a>
