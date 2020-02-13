@@ -1,11 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { HomeComponent } from './components/home/HomeComponent';
+//import { HomeComponent } from './components/home/HomeComponent';
+import { Provider } from 'react-redux';
+import { store } from './Store';
+import {BrowserRouter as Router, Route, Switch } from "react-router-dom"
+import  LoginComponent  from './components/login-component/LoginContainer';
 
-const App = () => {
+const App: React.FC = () => {
   return (
-    <HomeComponent/>
+    <div className="App">
+      <Provider store={store}>
+        <Router>
+          <Switch>
+            <Route path='/login' component = { LoginComponent } />
+          </Switch>
+        </Router>
+      </Provider>
+    </div>
   );
 }
 
