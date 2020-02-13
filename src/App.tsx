@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-//import { HomeComponent } from './components/home/HomeComponent';
+import { HomeComponent } from './components/home/HomeComponent';
 import { Provider } from 'react-redux';
 import { store } from './Store';
 import {BrowserRouter as Router, Route, Switch } from "react-router-dom"
@@ -13,6 +13,7 @@ const App: React.FC = () => {
         <Router>
           <Switch>
             <Route path='/login' component = { LoginComponent } />
+            <Route path = '/' component = {HomeComponent}/>
           </Switch>
         </Router>
       </Provider>
