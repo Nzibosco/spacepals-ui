@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, CardImg, CardText, CardBody, CardTitle, Button, CardSubtitle} from 'reactstrap';
+
 interface IRentalDisplayProps {
     id: number
     availableSeats: number

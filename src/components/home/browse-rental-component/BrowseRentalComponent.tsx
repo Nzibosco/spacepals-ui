@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowseRentalDisplayComponent } from './browse-rental-display-component/BrowseRentalDisplayComponent';
+import { CardColumns } from 'reactstrap';
 
 interface IBrowseRentalsState {
     limit: number
@@ -34,10 +35,15 @@ export class BrowseRentalComponent extends React.Component<IBrowseRentalsProps, 
             availableSeats={rentals.availableSeats}
             id={rentals.id}/>
         })
-        return(
-            <h3>
-                Not sure how you all want this set up yet, such as pagination etc.
-            </h3>
+
+        return (
+            <>
+                <h3>View Rentals Options Here!!</h3>
+                <CardColumns>
+                    {displayRentals}
+                </CardColumns>
+            </>
         )
+    
     }
 }
