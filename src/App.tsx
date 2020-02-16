@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { store } from './Store';
 import {BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import  LoginComponent  from './components/login-component/LoginContainer';
+import { ApiComponent } from './components/api-component/ApiComponent';
 
 const App: React.FC = () => {
   return (
@@ -13,6 +14,7 @@ const App: React.FC = () => {
         <Router>
           <Switch>
             <Route path='/login' component = { LoginComponent } />
+            <Route path='/apitest' component = { ApiComponent } />
             <Route path = '/' component = {HomeComponent}/>
           </Switch>
         </Router>
