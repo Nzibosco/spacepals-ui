@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from '../../../src/utils/navbar/Navbar';
+import { Link } from 'react-router-dom';
 
 // our landing page
 
@@ -32,7 +33,7 @@ export class HomeComponent extends React.Component {
                     </blockquote>
 
                     <a className="btn btn-primary btn-lg" href="/login" data-toggle="modal" role="button">Login</a>
-            <p className="lead">New user? Click <a href="/register" role="button">here to register</a></p>
+            <p className="lead">New user? Click <Link to='/register'>Register</Link> here to register</p>
                 </div>
             </div>
         )
