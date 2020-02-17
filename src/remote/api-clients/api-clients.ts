@@ -5,4 +5,5 @@ export const getPlanets = async(url:string) : Promise<object> => {
     let body = await response.data.bodies
     //let bodyJson = await body.json()
     return body
+
 }
