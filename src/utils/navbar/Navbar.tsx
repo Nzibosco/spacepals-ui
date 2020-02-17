@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {Link} from 'react-router-dom';
 import {
     Collapse,
     Navbar,
@@ -18,7 +19,7 @@ const SpaceNav = (props: any) => {
 
         <Navbar className="container-fluid" light expand="lg" style = {{backgroundColor: "khaki"}}>
             <NavbarBrand style={{ color: "black", fontWeight: 800, fontSize: "30px", fontStyle: "italic", }}>
-                SpacePals
+                <Link to="/" style={{ color: "black", fontWeight: 800, fontSize: "30px", fontStyle: "italic", }}>SpacePals</Link>
         </NavbarBrand>
             <NavbarToggler onClick={toggle} />
             <Collapse isOpen={isOpen} navbar style = {{paddingLeft: "25%"}}>
@@ -31,6 +32,9 @@ const SpaceNav = (props: any) => {
                     </NavItem>
                     <NavItem>
                         <NavLink href="/rent">Rent Spaceships</NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink href="/planet">Planets</NavLink>
                     </NavItem>
                     <NavItem>
                         <NavLink href="/book">Book Flights</NavLink>
