@@ -6,6 +6,7 @@ import { store } from './Store';
 import {BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import  LoginComponent  from './components/login-component/LoginContainer';
 import { ApiComponent } from './components/api-component/ApiComponent';
+import DestinationComponent from './components/destinations/DestinationContainer';
 
 const App: React.FC = () => {
   return (
@@ -13,6 +14,7 @@ const App: React.FC = () => {
       <Provider store={store}>
         <Router>
           <Switch>
+            <Route path = '/planet' component = {DestinationComponent}/>
             <Route path='/login' component = { LoginComponent } />
             <Route path='/apitest' component = { ApiComponent } />
             <Route path = '/' component = {HomeComponent}/>

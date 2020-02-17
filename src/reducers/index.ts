@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
-import { loginReducer } from "./login-reducer"
+import { loginReducer } from "./login-reducer";
+import {planetReducer} from "./planet-reducer";
 
 
 
@@ -8,10 +9,18 @@ export interface IUserState {
     loginMessage:string
 }
 
+// planet/ destination reduce / state
+
+export interface IDestinationState {
+    allDestinations: any[]
+}
+
 export interface IState {
     userState: IUserState
+    planetState: IDestinationState
 }
 
 export const state = combineReducers<IState>({
-    userState: loginReducer
+    userState: loginReducer,
+    planetState: planetReducer
 })
