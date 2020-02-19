@@ -7,6 +7,8 @@ import {BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import  LoginComponent  from './components/login-component/LoginContainer';
 import { ApiComponent } from './components/api-component/ApiComponent';
 import DestinationComponent from './components/destinations/DestinationContainer';
+import { AboutComponent } from './components/about-us-component/AboutComponent';
+
 
 const App: React.FC = () => {
   return (
@@ -16,6 +18,7 @@ const App: React.FC = () => {
           <Switch>
             <Route path = '/planet' component = {DestinationComponent}/>
             <Route path='/login' component = { LoginComponent } />
+            <Route path='/about' component = { AboutComponent}/>
             <Route path='/apitest' component = { ApiComponent } />
             <Route path = '/' component = {HomeComponent}/>
           </Switch>

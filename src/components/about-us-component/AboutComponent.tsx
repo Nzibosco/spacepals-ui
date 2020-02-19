@@ -1,18 +1,13 @@
-import React from 'react';
+import React from 'react'
 import Navbar from '../../../src/utils/navbar/Navbar';
 import { Link } from 'react-router-dom';
 
-// our landing page
 
-interface IHomeState {
 
-}
-
-export class HomeComponent extends React.Component {
-    constructor(props:any) {super(props);}
+export class AboutComponent extends React.Component<any,any> {
 
     render() {
-        return (
+        return(
             <div>
                 <Navbar/>
                 <div className = "jumbotron text-center" 
@@ -27,15 +22,15 @@ export class HomeComponent extends React.Component {
                     <h1 className="display-4 text-danger" style = {{fontWeight: 800, fontSize: "90px"}}>SpacePals</h1>
                     <h1 className="lead">Enabling inter-planetary travels</h1>
                     <hr></hr>
-                    <blockquote className = "lead"><h2>
-                    "It’s one small step for man, one giant leap for mankind."</h2>
-                    <h4 className = "lead">- Neil Armstrong</h4>
+                    <blockquote className = "lead">
+                    <h2>"Spacepals is a platform designed to make inter-planetary travel accessible to everone.</h2>
+                    <h2>We connect you with high quality spaceflight providers, making your dream destination a reality."</h2>
+                    <h4 className = "lead">- Bosco said this</h4>
                     </blockquote>
-
-                    <a className="btn btn-primary btn-lg" href="/login" data-toggle="modal" role="button">Login</a>
-            <p className="lead">New user? Click <Link to='/register'>Register</Link> here to register</p>
                 </div>
             </div>
         )
     }
+
+
 }
