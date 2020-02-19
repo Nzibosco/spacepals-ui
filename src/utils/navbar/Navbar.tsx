@@ -24,14 +24,14 @@ const SpaceNav = (props: any) => {
             <NavbarToggler onClick={toggle} />
             <Collapse isOpen={isOpen} navbar style = {{paddingLeft: "25%"}}>
                 <Nav className="mr-auto" style={{fontSize: "20px"}}>
+                <NavItem>
+                        <NavLink href="/home">Home</NavLink>
+                    </NavItem>
                     <NavItem>
                         <NavLink href="/dashboard">Dashboard</NavLink>
                     </NavItem>
                     <NavItem>
-                        <NavLink href="/components/">About us</NavLink>
-                    </NavItem>
-                    <NavItem>
-                        <NavLink href="/rent">Rent Spaceships</NavLink>
+                        <NavLink href="/about">About us</NavLink>
                     </NavItem>
                     <NavItem>
                         <NavLink href="/planet">Planets</NavLink>
