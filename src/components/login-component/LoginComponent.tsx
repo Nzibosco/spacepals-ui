@@ -1,6 +1,10 @@
 import React, { SyntheticEvent } from 'react'
 import { Form, FormGroup, Label, Col, Input, Button, Jumbotron } from 'reactstrap'
+
+import SpaceNav from '../../utils/navbar/Navbar'
+
 import { withRouter } from 'react-router'
+
 //import {apiLogin} from '../../remote/login-clients/login-clients'
 
 interface ILoginState {
@@ -52,6 +56,49 @@ export class LoginComponent extends React.Component<ILoginProps, ILoginState> {
 
     render() {
         return (
+
+            <div>
+                <SpaceNav/>
+                <div style = {{
+                    margin:"10% 30%"
+                }}>
+                    <div style={{
+                    backgroundColor:"white",
+                    outlineWidth:"2px",
+                    outlineColor:"black"
+                }}>
+                    <h1>Welcome</h1>
+                    <br></br>
+                    <br></br>
+                    <Form onSubmit={this.submitLogin}>
+                        <FormGroup row>
+                            <Label for="exampleUsername" sm={2}>Username</Label>
+                            <Col sm={10}>
+                                <Input required
+                                    type="text"
+                                    name="email"
+                                    id="exampleUsername"
+                                    placeholder="put username here"
+                                    value={this.state.username}
+                                    onChange={this.updateUsername} />
+                            </Col>
+                        </FormGroup>
+                        <FormGroup row>
+                            <Label for="examplePassword" sm={2}>Password</Label>
+                            <Col sm={10}>
+                                <Input required
+                                    type="password"
+                                    name="password"
+                                    id="examplePassword"
+                                    placeholder="put password here"
+                                    value={this.state.password}
+                                    onChange={this.updatePassword} />
+                            </Col>
+                        </FormGroup>
+                        <Button color="primary">Login</Button>
+                    </Form>
+                    <p>{this.props.loginMessage}</p>
+                    </div>
             <div className= "text-center" style = {{
                 margin:"10% 30%"
             }}>
