@@ -10,6 +10,7 @@ import DestinationComponent from './components/destinations/DestinationContainer
 import { AboutComponent } from './components/about-us-component/AboutComponent';
 import {Register} from './components/register/Register'
 import Navbar from './utils/navbar/Navbar';
+import { DashboardComponent } from './components/dashboard-component/DashboardComponent';
 
 
 const App: React.FC = () => {
@@ -22,6 +23,7 @@ const App: React.FC = () => {
           <Switch>
             <Route path = '/planet' component = {DestinationComponent}/>
             <Route path='/login' component = { LoginComponent } />
+            <Route path = '/dashboard' component = {DashboardComponent}/>
             <Route path='/about' component = { AboutComponent}/>
             <Route path='/apitest' component = { ApiComponent } />
             <Route path = '/register' component = {Register}/>
