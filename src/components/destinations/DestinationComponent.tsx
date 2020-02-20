@@ -1,7 +1,8 @@
 import React from 'react';
 import Navbar from '../../utils/navbar/Navbar';
 import { Jumbotron } from 'reactstrap';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 
 
@@ -30,6 +31,7 @@ export class DestinationComponent extends React.Component<IDestinationProps, IDe
         }
     }
 
+    // don't touch this function. Planets saved! 
    savePlanetsInDatabase = () => {
         console.log("Saving planets into the database!")
         this.props.allDestinations.map(planet => {
@@ -38,7 +40,13 @@ export class DestinationComponent extends React.Component<IDestinationProps, IDe
                 numberOfMoons: planet.moons? planet.moons.length: 0,
                 gravity: planet.gravity
             }
-            console.log(planetData);          
+
+            axios.post('http://localhost:8080/spacepals/planets',
+                planetData
+            ).then(res => {
+                console.log('posted');   
+            })
+
         })
     }
 
@@ -48,7 +56,7 @@ export class DestinationComponent extends React.Component<IDestinationProps, IDe
         const displayPlanets = this.props.allDestinations.map((planet: any) => {
             return (
                 <div className="jumbotron">
-                    <button onClick={this.savePlanetsInDatabase}>Check planet</button>
+                    {/* <button onClick={this.savePlanetsInDatabase}>Check planet</button> */}
                     <div className="jumbotron">
                         <h4>{planet.englishName}</h4>
                         <p><strong>Aphelion: </strong>{planet.aphelion}</p>
