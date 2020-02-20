@@ -9,13 +9,16 @@ import { ApiComponent } from './components/api-component/ApiComponent';
 import DestinationComponent from './components/destinations/DestinationContainer';
 import { AboutComponent } from './components/about-us-component/AboutComponent';
 import {Register} from './components/register/Register'
+import Navbar from './utils/navbar/Navbar';
 
 
 const App: React.FC = () => {
   return (
     <div>
       <Provider store={store}>
+        
         <Router>
+        <Navbar/>
           <Switch>
             <Route path = '/planet' component = {DestinationComponent}/>
             <Route path='/login' component = { LoginComponent } />
