@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Card, Button, CardTitle, CardText, Row, Col} from 'reactstrap';
 import Navbar from '../../../src/utils/navbar/Navbar';
 
-export class FlightManagerDashboard extends React.Component {
+export class UserDashboard extends React.Component {
 
     render() {
         return (

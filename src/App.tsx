@@ -9,6 +9,8 @@ import { ApiComponent } from './components/api-component/ApiComponent';
 import DestinationComponent from './components/destinations/DestinationContainer';
 import { ViewFlightsRentalsComponent } from './components/view-flights-rentals-component/ViewFlightsRentalsComponent';
 import { FlightManagerDashboard } from './components/flight-manager-dashboard-component/FlightManagerDashboardComponent';
+import { OpenFlightsComponent } from './components/open-flights-component/OpenFlightsComponent';
+import { UserDashboard } from './components/user-dashboard-component/UserDashboardComponent';
 
 const App: React.FC = () => {
   return (
@@ -16,6 +18,8 @@ const App: React.FC = () => {
       <Provider store={store}>
         <Router>
           <Switch>
+            <Route path='/user-dashboard' component={UserDashboard} />
+            <Route path='/open-flights' component={OpenFlightsComponent} />
             <Route path='/flights' component={ViewFlightsRentalsComponent} />
             <Route path='/manager-dashboard' component={FlightManagerDashboard} />
             <Route path='/planet' component={DestinationComponent} />

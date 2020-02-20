@@ -19,7 +19,7 @@ export class FlightManagerDashboard extends React.Component {
                     <Card body>
                         <CardTitle>Open flights</CardTitle>
                         <CardText>View all previous flight</CardText>
-                        <Button href='/current-flights'>Past flights</Button>
+                        <Button href='/open-flights'>Past flights</Button>
                     </Card>
                 </Col>
                 <Col sm="6">
