@@ -1,5 +1,6 @@
 import React, { SyntheticEvent } from 'react'
 import { Form, FormGroup, Label, Col, Input, Button, Jumbotron } from 'reactstrap'
+//import {apiLogin} from '../../remote/login-clients/login-clients'
 
 interface ILoginState {
     username: string
@@ -38,6 +39,14 @@ export class LoginComponent extends React.Component<ILoginProps, ILoginState> {
     submitLogin = async(event: SyntheticEvent) => {
         event.preventDefault();
         this.props.updateCurrentUser(this.state.username, this.state.password)
+        //apiLogin(this.state.username, this.state.password)
+
+        this.setState({
+            ...this.state,
+            username: "",
+            password:""
+        })
+
     }
 
     render() {
@@ -59,7 +68,7 @@ export class LoginComponent extends React.Component<ILoginProps, ILoginState> {
                         <Col sm={10}>
                             <Input required
                                 type="text"
-                                name="Username"
+                                name="email"
                                 id="exampleUsername"
                                 placeholder="put username here"
                                 value={this.state.username}

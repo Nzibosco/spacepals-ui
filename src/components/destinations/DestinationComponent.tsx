@@ -30,12 +30,25 @@ export class DestinationComponent extends React.Component<IDestinationProps, IDe
         }
     }
 
+   savePlanetsInDatabase = () => {
+        console.log("Saving planets into the database!")
+        this.props.allDestinations.map(planet => {
+            let planetData = {
+                planetName: planet.englishName,
+                numberOfMoons: planet.moons? planet.moons.length: 0,
+                gravity: planet.gravity
+            }
+            console.log(planetData);          
+        })
+    }
+
 
 
     render() {
         const displayPlanets = this.props.allDestinations.map((planet: any) => {
             return (
                 <div className="jumbotron">
+                    <button onClick={this.savePlanetsInDatabase}>Check planet</button>
                     <div className="jumbotron">
                         <h4>{planet.englishName}</h4>
                         <p><strong>Aphelion: </strong>{planet.aphelion}</p>

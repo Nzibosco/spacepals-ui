@@ -5,20 +5,23 @@ export const loginTypes = {
     UNSUCCESSFUL_LOGIN: 'LOGIN_UNSUCCESSFUL_LOGIN'
 }
 
-export const updateCurrentUser = (username:string, password:string) => async (dispatch:any) => {
-    let response:any = await apiLogin(username,password)
-    if(response.body) {
+export const updateCurrentUser = (email:string, password:string) => async (dispatch:any) => {
+    let response:any = await apiLogin(email,password)
+    let body = await response;
+    if(body.data) {
+        console.log(body);
+        
         dispatch({
             type:loginTypes.SUCCESSFUL_LOGIN,
             payload:{
-                currentUser:response.body
+                currentUser:body.data
             }
         })
     } else {
         dispatch({
             type:loginTypes.UNSUCCESSFUL_LOGIN,
             payload: {
-                loginMessage:response.loginMessage
+                loginMessage:'Login failed. Status code: ' + body.status + ''
             }
         })
     }
