@@ -10,7 +10,7 @@ import DestinationComponent from './components/destinations/DestinationContainer
 import { AboutComponent } from './components/about-us-component/AboutComponent';
 import {Register} from './components/register/Register'
 import Navbar from './utils/navbar/Navbar';
-import { DashboardComponent } from './components/dashboard-component/DashboardComponent';
+import { DashboardComponent } from './components/dashboard-component/regular-user/DashboardComponent';
 
 import { RegisterCompanyComponent } from './components/register-company-component/RegisterCompanyComponent';
 import { CreateAircraftComponent } from './components/create-aircraft-component/CreateAircraftComponent';
