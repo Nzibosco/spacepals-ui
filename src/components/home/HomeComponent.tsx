@@ -16,11 +16,9 @@ export class HomeComponent extends React.Component {
             <div>
                 <Navbar/>
                 <div className = "jumbotron text-center" 
-                style = {{backgroundColor: "white", 
-                //backgroundImage: "url(https://cdnb.artstation.com/p/assets/images/images/006/585/191/large/malte-madsen-spaceship-concept-refined-final.jpg?1499717461)",
-                backgroundSize: "100%",
-                backgroundAttachment: "fixed",
-                backgroundRepeat: "no-repeat"
+                style = {{ 
+                backgroundImage: "url(https://www.google.com/url?sa=i&url=https%3A%2F%2Fgiphy.com%2Fgifs%2Fspaceship-fY4AX6yKzcQHS&psig=AOvVaw1mcYiYew-IRSJKQy3qq9FL&ust=1581903200846000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMCF_dfm3ecCFQAAAAAdAAAAABAD)",
+                
                 
         
                 }}>
@@ -35,6 +33,7 @@ export class HomeComponent extends React.Component {
                     <a className="btn btn-primary btn-lg" href="/login" data-toggle="modal" role="button">Login</a>
             <p className="lead">New user? Click <Link to='/register'>Register</Link> here to register</p>
                 </div>
+                <img src= {"https://www.google.com/url?sa=i&url=https%3A%2F%2Fgiphy.com%2Fgifs%2Fspaceship-fY4AX6yKzcQHS&psig=AOvVaw1mcYiYew-IRSJKQy3qq9FL&ust=1581903200846000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMCF_dfm3ecCFQAAAAAdAAAAABAD"} alt="spaceship" />
             </div>
         )
     }
