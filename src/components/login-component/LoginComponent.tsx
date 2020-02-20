@@ -1,5 +1,6 @@
 import React, { SyntheticEvent } from 'react'
 import { Form, FormGroup, Label, Col, Input, Button, Jumbotron } from 'reactstrap'
+import { withRouter } from 'react-router'
 //import {apiLogin} from '../../remote/login-clients/login-clients'
 
 interface ILoginState {
@@ -51,21 +52,25 @@ export class LoginComponent extends React.Component<ILoginProps, ILoginState> {
 
     render() {
         return (
-            <div style = {{
+            <div className= "text-center" style = {{
                 margin:"10% 30%"
             }}>
                 <div style={{
-                backgroundColor:"white",
+                background:"inherit",
                 outlineWidth:"2px",
-                outlineColor:"black"
+                outlineColor:"red",
+                color: "white",
+                borderStyle: "solid",
+                borderColor: "white", 
+                borderRadius: "25px"
             }}>
                 <h1>Welcome</h1>
                 <br></br>
                 <br></br>
                 <Form onSubmit={this.submitLogin}>
                     <FormGroup row>
-                        <Label for="exampleUsername" sm={2}>Username</Label>
-                        <Col sm={10}>
+                        <Label for="exampleUsername" sm={2}>Email</Label>
+                        <Col sm={8}>
                             <Input required
                                 type="text"
                                 name="email"
@@ -78,7 +83,7 @@ export class LoginComponent extends React.Component<ILoginProps, ILoginState> {
                     </FormGroup>
                     <FormGroup row>
                         <Label for="examplePassword" sm={2}>Password</Label>
-                        <Col sm={10}>
+                        <Col sm={8}>
                             <Input required
                                 type="password"
                                 name="password"

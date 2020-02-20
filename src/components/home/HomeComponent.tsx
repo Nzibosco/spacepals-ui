@@ -14,8 +14,8 @@ export class HomeComponent extends React.Component {
 
     render() {
         return (
-            <div>
-                <Navbar/>
+            // <div>
+                // <Navbar/>
                 <div>
                     <div className = "row" style = {{margin: "0, auto", textAlign: "center", height: "100%"}}>
                         <div className="container col-12">
@@ -53,7 +53,7 @@ export class HomeComponent extends React.Component {
                     
                 </div>
         
-            </div>
+            // </div>
         )
     }
 }
