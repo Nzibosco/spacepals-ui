@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-
+import {Table} from 'reactstrap';
+import Navbar from '../../../src/utils/navbar/Navbar';
 
 export class ViewFlightsRentalsComponent extends Component {
     constructor(props) {
@@ -19,12 +20,35 @@ export class ViewFlightsRentalsComponent extends Component {
         return this.state.flights.map((flight, index) => {
             const {id, name, company, destination} = flight;
             return (
+                
+                    
+                <Table bordered>
+                    <thead>
+                    <tr>
+                        <th>Flight Id</th>
+                        <th>Aircraft Name</th>
+                        <th>Company</th>
+                        <th>Destination Point</th>
+                        <th>Arrival Time</th>
+                        <th>Departure Point</th>
+                        <th>Departure Time</th>
+                        <th>Total Flight Duration</th>
+                        <th>Available Seats</th>
+                        <th>Total Seats</th>
+                        <th>Frequent Flyer <br/>Points Upon Purchase</th>
+                        <th>Flight Cost</th>
+                    </tr>
+                    </thead>
+                    <tbody>
                 <tr key={id}>
                     <td>{id}</td>
                     <td>{name}</td>
                     <td>{company}</td>
                     <td>{destination}</td>
                 </tr>
+                </tbody>
+                </Table>
+               
             )
         })
     }
@@ -39,7 +63,7 @@ export class ViewFlightsRentalsComponent extends Component {
     render() {
         return (
             <div>
-                <h1 id='title'>SpacePals Dynamic Table!</h1>
+                <Navbar/>
                 <table id='flights'>
                     <tbody>
                         {this.flightHistory()}

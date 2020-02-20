@@ -3,10 +3,12 @@ import './App.css';
 import { HomeComponent } from './components/home/HomeComponent';
 import { Provider } from 'react-redux';
 import { store } from './Store';
-import {BrowserRouter as Router, Route, Switch } from "react-router-dom"
-import  LoginComponent  from './components/login-component/LoginContainer';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
+import LoginComponent from './components/login-component/LoginContainer';
 import { ApiComponent } from './components/api-component/ApiComponent';
 import DestinationComponent from './components/destinations/DestinationContainer';
+import { ViewFlightsRentalsComponent } from './components/view-flights-rentals-component/ViewFlightsRentalsComponent';
+import { FlightManagerDashboard } from './components/flight-manager-dashboard-component/FlightManagerDashboardComponent';
 
 const App: React.FC = () => {
   return (
@@ -14,10 +16,12 @@ const App: React.FC = () => {
       <Provider store={store}>
         <Router>
           <Switch>
-            <Route path = '/planet' component = {DestinationComponent}/>
-            <Route path='/login' component = { LoginComponent } />
-            <Route path='/apitest' component = { ApiComponent } />
-            <Route path = '/' component = {HomeComponent}/>
+            <Route path='/flights' component={ViewFlightsRentalsComponent} />
+            <Route path='/manager-dashboard' component={FlightManagerDashboard} />
+            <Route path='/planet' component={DestinationComponent} />
+            <Route path='/login' component={LoginComponent} />
+            <Route path='/apitest' component={ApiComponent} />
+            <Route path='/' component={HomeComponent} />
           </Switch>
         </Router>
       </Provider>
