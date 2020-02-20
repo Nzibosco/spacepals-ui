@@ -18,6 +18,7 @@ import { CreateFlightComponent } from './components/create-flight-component/Crea
 
 const App: React.FC = () => {
   return (
+    
     <div>
       <Provider store={store}>
         
