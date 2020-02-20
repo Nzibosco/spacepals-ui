@@ -27,7 +27,7 @@ export class DashboardComponent extends React.Component<IDashboardState, IDashbo
             <div><p>Welcome {}</p></div>
             <div className = "row" style = {{}}>
                 <div className = "col-4">
-                    <h5>Choose from options below</h5>
+                    <h5>Choose from options below: </h5>
                 </div>
                 <div className = "col-8">
 
