@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../../../src/utils/navbar/Navbar';
 import { Link } from 'react-router-dom';
+import './index.css';
 
 // our landing page
 
@@ -13,28 +14,46 @@ export class HomeComponent extends React.Component {
 
     render() {
         return (
-            <div>
-                <Navbar/>
-                <div className = "jumbotron text-center" 
-                style = {{ 
-                backgroundImage: "url(https://www.google.com/url?sa=i&url=https%3A%2F%2Fgiphy.com%2Fgifs%2Fspaceship-fY4AX6yKzcQHS&psig=AOvVaw1mcYiYew-IRSJKQy3qq9FL&ust=1581903200846000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMCF_dfm3ecCFQAAAAAdAAAAABAD)",
-                
-                
-        
-                }}>
-                    <h1 className="display-4 text-danger" style = {{fontWeight: 800, fontSize: "90px"}}>SpacePals</h1>
-                    <h1 className="lead">Enabling inter-planetary travels</h1>
-                    <hr></hr>
-                    <blockquote className = "lead"><h2>
-                    "It’s one small step for man, one giant leap for mankind."</h2>
-                    <h4 className = "lead">- Neil Armstrong</h4>
-                    </blockquote>
+            // <div>
+                // <Navbar/>
+                <div>
+                    <div className = "row" style = {{margin: "0, auto", textAlign: "center", height: "100%"}}>
+                        <div className="container col-12">
+                            <div className="jumbotron text-center" style={{
+                                background: "inherit",
+                                borderStyle: "solid",
+                                borderColor: "white",
+                                borderRadius: "25px",
+                                width: "70%", margin: "auto", color: "white", height: "100%", fontStyle:"italic"
+                            }}>
+                                <h3>Enabling inter-planetary travels</h3>
 
-                    <a className="btn btn-primary btn-lg" href="/login" data-toggle="modal" role="button">Login</a>
-            <p className="lead">New user? Click <Link to='/register'>Register</Link> here to register</p>
+                                <blockquote className="lead"><h4>
+                                    "It’s one small step for man, one giant leap for mankind."</h4>
+                                    <p className = "btn btn-primary">- Neil Armstrong</p>
+                                </blockquote>
+                                <h1 className="display-4 text-danger" style={{ fontWeight: 800, fontSize: "90px" }}>SpacePals</h1>
+                                
+                            </div>  
+                        </div>
+                    </div>
+                    <div className = "row" style= {{paddingTop: "3%"}}>
+                        <div className = "card" style = {{borderRadius: "25%", borderStyle: "solid", background: "inherit",
+                        width: "50%", margin: "auto", borderColor: "white", color: "white"
+                        }}>
+                            <div className = "card-body text-center">
+                            <p className="btn btn-primary"><Link to= "/login" style = {{color:"white"}} >Login</Link></p>
+                            <h4>New user? Click <Link to='/register'>Register</Link> here to register</h4>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+
+                    
                 </div>
-                <img src= {"https://www.google.com/url?sa=i&url=https%3A%2F%2Fgiphy.com%2Fgifs%2Fspaceship-fY4AX6yKzcQHS&psig=AOvVaw1mcYiYew-IRSJKQy3qq9FL&ust=1581903200846000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMCF_dfm3ecCFQAAAAAdAAAAABAD"} alt="spaceship" />
-            </div>
+        
+            // </div>
         )
     }
 }

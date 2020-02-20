@@ -89,7 +89,7 @@ export class DestinationComponent extends React.Component<IDestinationProps, IDe
         if (this.props.allDestinations) {
             return (
                 <>
-                    <Navbar />
+                    {/* <Navbar /> */}
 
                     {displayPlanets}
                 </>

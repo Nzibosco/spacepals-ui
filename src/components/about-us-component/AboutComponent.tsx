@@ -9,7 +9,7 @@ export class AboutComponent extends React.Component<any,any> {
     render() {
         return(
             <div>
-                <Navbar/>
+                {/* <Navbar/> */}
                 <div className = "jumbotron text-center" 
                 style = {{backgroundColor: "white", 
                 //backgroundImage: "url(https://cdnb.artstation.com/p/assets/images/images/006/585/191/large/malte-madsen-spaceship-concept-refined-final.jpg?1499717461)",

@@ -9,16 +9,20 @@ import { ApiComponent } from './components/api-component/ApiComponent';
 import DestinationComponent from './components/destinations/DestinationContainer';
 import { AboutComponent } from './components/about-us-component/AboutComponent';
 import {Register} from './components/register/Register'
+
 import { RegisterCompanyComponent } from './components/register-company-component/RegisterCompanyComponent';
 import { CreateAircraftComponent } from './components/create-aircraft-component/CreateAircraftComponent';
 import { CreateFlightComponent } from './components/create-flight-component/CreateFlightComponent';
 
+import Navbar from './utils/navbar/Navbar';
 
 const App: React.FC = () => {
   return (
     <div>
       <Provider store={store}>
+        
         <Router>
+        <Navbar/>
           <Switch>
             <Route path='/flight' component = { CreateFlightComponent}/>
             <Route path='/ship' component = {CreateAircraftComponent} />

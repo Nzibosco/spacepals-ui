@@ -17,43 +17,49 @@ const SpaceNav = (props: any) => {
 
     return (
 
-        <Navbar className="container-fluid" light expand="lg" style = {{backgroundColor: "khaki"}}>
-            <NavbarBrand style={{ color: "black", fontWeight: 800, fontSize: "30px", fontStyle: "italic", }}>
-                <Link to="/" style={{ color: "black", fontWeight: 800, fontSize: "30px", fontStyle: "italic", }}>SpacePals</Link>
+        <Navbar className="container-fluid" light expand="lg" style = {{}}>
+            <NavbarBrand style={{ color: "white", fontWeight: 800, fontSize: "30px", fontStyle: "italic", }}>
+                <Link to="/" style={{ color: "white", fontWeight: 800, fontSize: "30px", fontStyle: "italic", }}>SpacePals</Link>
         </NavbarBrand>
             <NavbarToggler onClick={toggle} />
             <Collapse isOpen={isOpen} navbar style = {{paddingLeft: "25%"}}>
                 <Nav className="mr-auto" style={{fontSize: "20px"}}>
+
                     <NavItem>
-                        <Link to="/home">Home</Link>
+                        <Link to="/home" style = {{color: "white"}}>Home</Link>
+
                     </NavItem>
                     <h3>|</h3>
                     <NavItem>
-                        <Link to="/dashboard">Dashboard</Link>
+
+                        <Link to="/dashboard" style = {{color: "white"}}>Dashboard</Link>
+
                     </NavItem>
                     <h3>|</h3>
                     <NavItem>
-                        <Link to="/about">About us</Link>
+
+                        <Link to="/about" style = {{color: "white"}}>About us</Link>
                     </NavItem>
                     <h3>|</h3>
                     <NavItem>
-                        <Link to="/planet">Planets</Link>
+                        <Link to="/planet" style = {{color: "white"}}>Planets</Link>
+
                     </NavItem>
                     <h3>|</h3>
                     <NavItem>
-                        <Link to="/book">Book Flights</Link>
+                        <Link to="/book" style = {{color: "white"}}>Book Flights</Link>
                     </NavItem>
                     <h3>|</h3>
                     <NavItem>
-                        <Link to="/registerCompany">Register a Company</Link>
+                        <Link to="/registerCompany" style = {{color: "white"}}>Register a Company</Link>
                     </NavItem>
                     <h3>|</h3>
                     <NavItem>
-                        <Link to="/ship">Register a Ship</Link>
+                        <Link to="/ship" style = {{color: "white"}}>Register a Ship</Link>
                     </NavItem>
                     <h3>|</h3>
                     <NavItem>
-                        <Link to="/flight">Register a Flight</Link>
+                        <Link to="/flight" style = {{color: "white"}}>Register a Flight</Link>
                     </NavItem>
                 </Nav>
             </Collapse>
