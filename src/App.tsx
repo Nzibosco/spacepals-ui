@@ -9,6 +9,7 @@ import { ApiComponent } from './components/api-component/ApiComponent';
 import DestinationComponent from './components/destinations/DestinationContainer';
 import { AboutComponent } from './components/about-us-component/AboutComponent';
 import {Register} from './components/register/Register'
+import { RegisterCompanyComponent } from './components/register-company-component/RegisterCompanyComponent';
 
 
 const App: React.FC = () => {
@@ -20,6 +21,7 @@ const App: React.FC = () => {
             <Route path = '/planet' component = {DestinationComponent}/>
             <Route path='/login' component = { LoginComponent } />
             <Route path='/about' component = { AboutComponent}/>
+            <Route path='/registerCompany' component = { RegisterCompanyComponent}/>
             <Route path='/apitest' component = { ApiComponent } />
             <Route path = '/register' component = {Register}/>
             <Route path = '/' component = {HomeComponent}/>
