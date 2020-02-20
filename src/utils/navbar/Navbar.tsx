@@ -17,27 +17,27 @@ const SpaceNav = (props: any) => {
 
     return (
 
-        <Navbar className="container-fluid" light expand="lg" style = {{backgroundColor: "khaki"}}>
-            <NavbarBrand style={{ color: "black", fontWeight: 800, fontSize: "30px", fontStyle: "italic", }}>
-                <Link to="/" style={{ color: "black", fontWeight: 800, fontSize: "30px", fontStyle: "italic", }}>SpacePals</Link>
+        <Navbar className="container-fluid" light expand="lg" style = {{}}>
+            <NavbarBrand style={{ color: "white", fontWeight: 800, fontSize: "30px", fontStyle: "italic", }}>
+                <Link to="/" style={{ color: "white", fontWeight: 800, fontSize: "30px", fontStyle: "italic", }}>SpacePals</Link>
         </NavbarBrand>
             <NavbarToggler onClick={toggle} />
             <Collapse isOpen={isOpen} navbar style = {{paddingLeft: "25%"}}>
                 <Nav className="mr-auto" style={{fontSize: "20px"}}>
                 <NavItem>
-                        <NavLink href="/home">Home</NavLink>
+                        <NavLink href="/home" style = {{color: "white"}}>Home</NavLink>
                     </NavItem>
                     <NavItem>
-                        <NavLink href="/dashboard">Dashboard</NavLink>
+                        <NavLink href="/dashboard" style = {{color: "white"}}>Dashboard</NavLink>
                     </NavItem>
                     <NavItem>
-                        <NavLink href="/about">About us</NavLink>
+                        <NavLink href="/about" style = {{color: "white"}}>About us</NavLink>
                     </NavItem>
                     <NavItem>
-                        <NavLink href="/planet">Planets</NavLink>
+                        <NavLink href="/planet" style = {{color: "white"}}>Planets</NavLink>
                     </NavItem>
                     <NavItem>
-                        <NavLink href="/book">Book Flights</NavLink>
+                        <NavLink href="/book" style = {{color: "white"}}>Book Flights</NavLink>
                     </NavItem>
 
                 </Nav>
