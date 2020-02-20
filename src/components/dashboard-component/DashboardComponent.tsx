@@ -29,24 +29,12 @@ export class DashboardComponent extends React.Component<IDashboardProps, IDashbo
         }
         if(this.props.currentUser.role == 'FLIGHT_MANAGER') {
             return(
-                <>
-                <div><p>Welcome {}</p></div>
-                <div className = "row" style = {{}}>
-                    <div className = "col-4">
-                        <h5>Choose from options below</h5>
-                    </div>
-                    <div className = "col-8">
-
-                    </div>
-                </div>
-                </>
+                <Redirect to='/mandash'/> 
             )
         }
         else {
             return (
-                <div>
-                    <h1>BASIC BITCH</h1>
-                </div>
+                <Redirect to='/usedash'/>
             )
         }
     }
