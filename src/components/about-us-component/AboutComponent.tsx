@@ -1,6 +1,6 @@
 import React from 'react'
-import Navbar from '../../../src/utils/navbar/Navbar';
-import { Link } from 'react-router-dom';
+import SpaceNav from '../../utils/navbar/Navbar'
+
 
 
 
@@ -10,6 +10,7 @@ export class AboutComponent extends React.Component<any,any> {
         return(
             <div>
                 {/* <Navbar/> */}
+                <SpaceNav/>
                 <div className = "jumbotron text-center" 
                 style = {{backgroundColor: "white", 
                 //backgroundImage: "url(https://cdnb.artstation.com/p/assets/images/images/006/585/191/large/malte-madsen-spaceship-concept-refined-final.jpg?1499717461)",

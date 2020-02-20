@@ -1,5 +1,4 @@
 import React from 'react';
-import Navbar from '../../../src/utils/navbar/Navbar';
 import { Link } from 'react-router-dom';
 import './index.css';
 
@@ -10,7 +9,7 @@ interface IHomeState {
 }
 
 export class HomeComponent extends React.Component {
-    constructor(props:any) {super(props);}
+    //constructor(props:any) {super(props);}
 
     render() {
         return (

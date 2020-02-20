@@ -74,7 +74,7 @@ export class Register extends React.Component<IRegisterProps, IRegisterState>{
         
         const { name, value } = event.target;
         this.setState({
-            ... this.state,
+            ...this.state,
             [name]: value
         });
     };

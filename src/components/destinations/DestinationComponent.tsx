@@ -1,6 +1,4 @@
 import React from 'react';
-import Navbar from '../../utils/navbar/Navbar';
-import { Jumbotron } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
@@ -46,7 +44,6 @@ export class DestinationComponent extends React.Component<IDestinationProps, IDe
             ).then(res => {
                 console.log('posted');   
             })
-
         })
     }
 
