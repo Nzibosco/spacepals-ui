@@ -1,47 +1,41 @@
 import React from 'react'
+import { Redirect } from 'react-router'
 
 
 interface IDashboardState{
-
+    dummy:string
 }
 
 interface IDashboardProps{
-    currentUser: any
-
+    currentUser:any
 }
 
-export class ManagerDashboard extends React.Component<IDashboardState, IDashboardProps>{
+export class DashboardComponent extends React.Component<IDashboardProps, IDashboardState>{
 
-    constructor(props:any){
+    constructor(props:IDashboardProps){
         super(props)
         this.state = {
-            currentUser: null
+            dummy:''
         }
     }
 
 
 
-    render(){
-        return(
-            <>
-            <div><p>Welcome {}</p></div>
-            <div className = "row" style = {{}}>
-                <div className = "col-4">
-                    <h2>Choose from options below</h2>
-                    <div style = {{color: "white"}}>
-                        <h5>view Scheduled Flights</h5>
-                        {/* <h5>Book a flight</h5> */}
-                        <h5>View your flights history</h5>
-                        <h5>Facts about planets</h5>
-                        <h5>Your Companies</h5>
-                        <h5>Your Space Ships</h5>
-                    </div>
-                </div>
-                <div className = "col-8">
-
-                </div>
-            </div>
-            </>
-        )
+    render() {
+        if(!this.props.currentUser) {
+            return(
+                <Redirect to='/home'/>
+            )
+        }
+        if(this.props.currentUser.role == 'FLIGHT_MANAGER') {
+            return(
+                <Redirect to='/mandash'/> 
+            )
+        }
+        else {
+            return (
+                <Redirect to='/usedash'/>
+            )
+        }
     }
 }
