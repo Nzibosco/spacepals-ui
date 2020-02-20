@@ -8,11 +8,12 @@ import  LoginComponent  from './components/login-component/LoginContainer';
 import { ApiComponent } from './components/api-component/ApiComponent';
 import DestinationComponent from './components/destinations/DestinationContainer';
 import { AboutComponent } from './components/about-us-component/AboutComponent';
+import {Register} from './components/register/Register'
 
 
 const App: React.FC = () => {
   return (
-    <div className="App">
+    <div>
       <Provider store={store}>
         <Router>
           <Switch>
@@ -20,7 +21,9 @@ const App: React.FC = () => {
             <Route path='/login' component = { LoginComponent } />
             <Route path='/about' component = { AboutComponent}/>
             <Route path='/apitest' component = { ApiComponent } />
+            <Route path = '/register' component = {Register}/>
             <Route path = '/' component = {HomeComponent}/>
+            
           </Switch>
         </Router>
       </Provider>

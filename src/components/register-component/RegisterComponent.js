@@ -33,9 +33,9 @@ export class RegisterComponent extends Component {
             password: this.state.password.value
         }
 
-        credsJSON = JSON.stringify(creds)
+        //credsJSON = JSON.stringify(creds)
 
-        const submitted = axios.post('localhost:3000/register', credsJSON)
+        //const submitted = axios.post('localhost:3000/register', credsJSON)
         .then(res => {
             console.log(res);
             console.log(res.data);
