@@ -118,60 +118,66 @@ export class BookFlightComponent extends React.Component<IBookFlightProps, IBook
     payment = () => {
         return (
             <div>
-                <Form>
-                    <FormGroup row>
-                        <Label for="number" sm={4}>Card Number</Label>
-                        <Col sm={5}>
-                            <Input required
-                                type="number"
-                                name="number"
-                                id="number"
-                                placeholder="enter card number"
-                                // value={''}
-                                onChange={this.handleChange} />
+                <button className="btn" type="button" data-toggle="collapse" data-target="#payment"><strong style ={{color: "red", fontStyle:"italic", fontWeight:35}}>Click to pay and book your flight</strong></button>
+                <div className="collapse col-10" id="payment" style = {{borderStyle: "solid", borderColor:"black", borderRadius: "25px", padding: "10px"}}>
+                    <Form>
+                        <FormGroup row>
+                            <Label for="number" sm={4}>Card Number</Label>
+                            <Col sm={5}>
+                                <Input required
+                                    type="number"
+                                    name="number"
+                                    id="number"
+                                    placeholder="enter card number"
+                                    // value={''}
+                                    style= {{borderRadius:"25px"}}
+                                    onChange={this.handleChange} />
 
-                        </Col>
-                    </FormGroup>
-                    <FormGroup row>
-                        <Label for="expiration" sm={4}>Expiration date</Label>
-                        <Col sm={5}>
-                            <Input required
-                                type="date"
-                                name="expiration"
-                                id="expiration"
-                                placeholder="enter expiration date"
-                                // value={"this.state.password"}
-                                onChange={this.handleChange} />
-                        </Col>
-                    </FormGroup>
-                    <FormGroup row>
-                        <Label for="name" sm={4}>Name on card</Label>
-                        <Col sm={5}>
-                            <Input required
-                                type="text"
-                                name="name"
-                                id="name"
-                                placeholder="enter name"
-                                // value={"this.state.password"}
-                                onChange={this.handleChange} />
-                        </Col>
-                    </FormGroup>
-                    <FormGroup row>
-                        <Label for="csv" sm={4}>Code</Label>
-                        <Col sm={2}>
-                            <Input required
-                                type="number"
-                                name="code"
-                                id="csv"
-                                placeholder="CSV"
-                                value={"this.state.password"}
-                                onChange={this.handleChange} />
-                        </Col>
-                    </FormGroup>
-                
-                    <Button color="success">Pay</Button>
+                            </Col>
+                        </FormGroup>
+                        <FormGroup row>
+                            <Label for="expiration" sm={4}>Expiration date</Label>
+                            <Col sm={5}>
+                                <Input required
+                                    type="date"
+                                    name="expiration"
+                                    id="expiration"
+                                    placeholder="enter expiration date"
+                                    style= {{borderRadius:"25px"}}
+                                    // value={"this.state.password"}
+                                    onChange={this.handleChange} />
+                            </Col>
+                        </FormGroup>
+                        <FormGroup row>
+                            <Label for="name" sm={4}>Name on card</Label>
+                            <Col sm={5}>
+                                <Input required
+                                    type="text"
+                                    name="name"
+                                    id="name"
+                                    placeholder="enter name"
+                                    style= {{borderRadius:"25px"}}
+                                    // value={"this.state.password"}
+                                    onChange={this.handleChange} />
+                            </Col>
+                        </FormGroup>
+                        <FormGroup row>
+                            <Label for="csv" sm={4}>Code</Label>
+                            <Col sm={2}>
+                                <Input required
+                                    type="number"
+                                    name="code"
+                                    id="csv"
+                                    placeholder="CSV"
+                                    value={"this.state.password"}
+                                    style= {{borderRadius:"25px"}}
+                                    onChange={this.handleChange} />
+                            </Col>
+                        </FormGroup>
+                        <Button color ="primary" onClick={this.bookFlight}>Book</Button>                 
+                    </Form>
                     
-                </Form>
+                </div>
             </div>
         )
     }
@@ -179,12 +185,12 @@ export class BookFlightComponent extends React.Component<IBookFlightProps, IBook
 
 
     render() {
-        
+
         //return(
 
 
         if (this.state.destinations.length) {
-        
+
             return (
                 <div style={{ width: "50%", margin: "auto" }} className="jumbotron">
                     <p>Select destination: <select onChange={this.updateSelection}>
@@ -203,18 +209,10 @@ export class BookFlightComponent extends React.Component<IBookFlightProps, IBook
                             <p> Available flights for {this.state.selectedPlanet}</p>
                             {this.displayFlights()}
                             <br />
+                            {this.payment()}
                             <br />
-                            <button className="btn" type="button" data-toggle="collapse" data-target = "#payment" aria-expanded="false" aria-controls="payment">Pay</button>
-                            <div className= "collapse" id="payment">
-                                <p>Hello</p>
-                               {this.payment()} 
-                            </div>
-                            
-                            <br />
-                            <br />
-                            <button className="btn btn-primary" onClick={this.bookFlight}>Book</button>
-                            <br />
-                            <br />
+                            <br />                           
+                           
                             <h6 style={{ color: "red" }}>{this.state.booked}</h6>
                             <br />
                             <Link to="/dashboard">Back to dashboard</Link>

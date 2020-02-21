@@ -53,7 +53,7 @@ export class LoginComponent extends React.Component<ILoginProps, ILoginState> {
     render() {
         return (
             <div>
-                <SpaceNav/>
+                {/* <SpaceNav/> */}
                 <div className= "text-center" style = {{
                     margin:"10% 30%"
                 }}>
