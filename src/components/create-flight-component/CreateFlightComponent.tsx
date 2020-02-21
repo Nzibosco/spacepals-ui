@@ -61,7 +61,7 @@ export class CreateFlightComponent extends React.Component<any,any> {
             flight:flight
         }
         console.log(flightdto)
-        Axios.post('http://localhost:8080/spacepals/flights', flightdto).then(res => {
+        Axios.post('http://projecttwodo-env.fryh9swbjr.us-east-2.elasticbeanstalk.com/flights', flightdto).then(res => {
             console.log(res);
         })
     }
@@ -71,14 +71,14 @@ export class CreateFlightComponent extends React.Component<any,any> {
     render() {
         return(
             <div>
-                <SpaceNav/>
+                {/* <SpaceNav/> */}
                 <div style = {{
                     margin:"10% 30%"
                 }}>
                     <div style={{
-                    backgroundColor:"white",
+                    backgroundColor:"inherit",
                     outlineWidth:"2px",
-                    outlineColor:"black"
+                    outlineColor:"black", color: "white"
                 }}>
                     <h1>Welcome</h1>
                     <br></br>

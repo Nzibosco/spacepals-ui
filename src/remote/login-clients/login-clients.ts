@@ -19,7 +19,7 @@ export const apiLogin = async (email: string, pass: string):Promise<object> => {
     }
     
     let res:any =
-    axios.post('http://localhost:8080/spacepals/auth',
+    axios.post('http://projecttwodo-env.fryh9swbjr.us-east-2.elasticbeanstalk.com/auth',
     credentials
     ).then(response =>{
         console.log(response.status === 200)

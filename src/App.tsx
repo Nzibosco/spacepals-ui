@@ -15,6 +15,7 @@ import { RegisterCompanyComponent } from './components/register-company-componen
 import { CreateAircraftComponent } from './components/create-aircraft-component/CreateAircraftComponent';
 import { CreateFlightComponent } from './components/create-flight-component/CreateFlightComponent';
 import LogoutComponent  from './components/logout-component/LogoutContainer';
+import { BookFlightComponent } from './components/book-flight-component/BookFlightComponent';
 
 const App: React.FC = () => {
   return (
@@ -26,6 +27,7 @@ const App: React.FC = () => {
         <Navbar/>
           <Switch>
             <Route path='/flight' component = { CreateFlightComponent}/>
+            <Route path='/book' component = { BookFlightComponent}/>
             <Route path='/ship' component = {CreateAircraftComponent} />
             <Route path = '/planet' component = {DestinationComponent}/>
             <Route path='/login' component = { LoginComponent } />
