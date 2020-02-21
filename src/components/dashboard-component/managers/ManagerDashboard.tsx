@@ -3,31 +3,31 @@ import { Redirect } from 'react-router'
 
 
 interface IDashboardState{
-    dummy:string
+    role:string
 }
 
 interface IDashboardProps{
-    currentUser:any
+    // currentUser:any
 }
 
-export class DashboardComponent extends React.Component<IDashboardProps, IDashboardState>{
+export class ManagerDashboard extends React.Component<IDashboardProps, IDashboardState>{
 
     constructor(props:IDashboardProps){
         super(props)
         this.state = {
-            dummy:''
+            role:''
         }
     }
 
 
 
     render() {
-        if(!this.props.currentUser) {
+        if(!this.state.role) {
             return(
                 <Redirect to='/home'/>
             )
         }
-        if(this.props.currentUser.role == 'FLIGHT_MANAGER') {
+        if(this.state.role == 'FLIGHT_MANAGER') {
             return(
                 <Redirect to='/mandash'/> 
             )

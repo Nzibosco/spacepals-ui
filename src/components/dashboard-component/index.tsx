@@ -7,14 +7,17 @@ import {DashboardComponent} from './regular-user/DashboardComponent';
 // if a user is a company manager, the dashboard rendered should be imported from managers folder and vice versa
 
 interface IDashboardState {
-    currentUserRole: string;
+    role: string
+
+
 }
 
 interface IDashboardProps {
-    role: string
+    currentUser: any;
+    
 }
 
-export class Dashboard extends React.Component<IDashboardState, IDashboardProps> {
+export class Dashboard extends React.Component<IDashboardProps, IDashboardState> {
 
     constructor(props:any){
         super(props)
@@ -28,7 +31,7 @@ render(){
         <>
 
             {
-                this.props.currentUserRole === "basic_user" ? 
+                this.props.currentUser === "basic_user" ? 
                 <DashboardComponent/> :
                 <ManagerDashboard/>
             }
