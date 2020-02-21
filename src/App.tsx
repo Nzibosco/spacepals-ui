@@ -13,7 +13,7 @@ import Navbar from './utils/navbar/Navbar';
 import { DashboardComponent } from './components/dashboard-component/regular-user/DashboardComponent';
 import { RegisterCompanyComponent } from './components/register-company-component/RegisterCompanyComponent';
 import { CreateAircraftComponent } from './components/create-aircraft-component/CreateAircraftComponent';
-import { CreateFlightComponent } from './components/create-flight-component/CreateFlightComponent';
+import CreateFlightComponent from './components/create-flight-component/CreateFlightContainer';
 import LogoutComponent  from './components/logout-component/LogoutContainer';
 import { BookFlightComponent } from './components/book-flight-component/BookFlightComponent';
 import  ViewAllFlights  from './components/view-all-flights-component/ViewAllFlightsContainer';
