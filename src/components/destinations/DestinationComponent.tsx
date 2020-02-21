@@ -76,7 +76,7 @@ export class DestinationComponent extends React.Component<IDestinationProps, IDe
                         ) : (<p>This planet has no moons</p>)}
                         <br></br>
 
-                        <Link to="/schedule-flight">Schedule a flight to this planet</Link>
+                        <Link to="/book">Schedule a flight to this planet</Link>
                         <br></br>
                     </div>
                 </div>
