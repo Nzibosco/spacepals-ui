@@ -15,6 +15,7 @@ import { DashboardComponent } from './components/dashboard-component/regular-use
 import { RegisterCompanyComponent } from './components/register-company-component/RegisterCompanyComponent';
 import { CreateAircraftComponent } from './components/create-aircraft-component/CreateAircraftComponent';
 import { CreateFlightComponent } from './components/create-flight-component/CreateFlightComponent';
+import { ViewAllFlights } from './components/view-all-flights-component/ViewAllFlightsComponent';
 
 const App: React.FC = () => {
   return (
@@ -25,6 +26,7 @@ const App: React.FC = () => {
         <Router>
         <Navbar/>
           <Switch>
+            <Route path='/viewflights' component = {ViewAllFlights}/>
             <Route path='/flight' component = { CreateFlightComponent}/>
             <Route path='/ship' component = {CreateAircraftComponent} />
             <Route path = '/planet' component = {DestinationComponent}/>
