@@ -1,4 +1,3 @@
-import { loginClient } from '.';
 import axios from 'axios';
 
 // export const apiLogin = async(username:string, password:string) : Promise<object> => {

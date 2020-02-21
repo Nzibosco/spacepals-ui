@@ -64,7 +64,6 @@ export class RegisterCompanyComponent extends React.Component<any,any> {
                                     placeholder="put company name here"
                                     value={this.state.name}
                                     onChange={this.updateCompanyname} />
-                                {/* this is an example of data binding, we take data from the state and put it in our tsx */}
                             </Col>
                         </FormGroup>
                         <FormGroup row>

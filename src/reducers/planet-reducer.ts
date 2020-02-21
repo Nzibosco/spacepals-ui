@@ -9,7 +9,7 @@ export const planetReducer = (state = initialState, action:any) =>{
     switch(action.type){
         case destinationTypes.SUCCESSFULL_GET_PLANETS: {
             return {
-                ... state,
+                ...state,
                 allDestinations: action.payload.allDestinations
     
             }
