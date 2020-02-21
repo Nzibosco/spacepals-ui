@@ -14,6 +14,7 @@ import { DashboardComponent } from './components/dashboard-component/regular-use
 import { RegisterCompanyComponent } from './components/register-company-component/RegisterCompanyComponent';
 import { CreateAircraftComponent } from './components/create-aircraft-component/CreateAircraftComponent';
 import { CreateFlightComponent } from './components/create-flight-component/CreateFlightComponent';
+import LogoutComponent  from './components/logout-component/LogoutContainer';
 
 const App: React.FC = () => {
   return (
@@ -33,6 +34,7 @@ const App: React.FC = () => {
             <Route path='/registerCompany' component = { RegisterCompanyComponent}/>
             <Route path='/apitest' component = { ApiComponent } />
             <Route path = '/register' component = {Register}/>
+            <Route path = '/logout' component = { LogoutComponent}/>
             <Route path = '/' component = {HomeComponent}/>
             
           </Switch>
