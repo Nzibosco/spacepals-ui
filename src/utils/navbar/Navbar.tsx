@@ -22,42 +22,48 @@ const SpaceNav = (props: any) => {
                 <Link to="/" style={{ color: "white", fontWeight: 800, fontSize: "30px", fontStyle: "italic", }}>SpacePals</Link>
         </NavbarBrand>
             <NavbarToggler onClick={toggle} />
-            <Collapse isOpen={isOpen} navbar style = {{paddingLeft: "25%"}}>
+            <Collapse isOpen={isOpen} navbar style = {{paddingLeft: "20%"}}>
                 <Nav className="mr-auto" style={{fontSize: "20px"}}>
 
-                    <NavItem>
+                    {/* <NavItem>
                         <Link to="/home" style = {{color: "white"}}>Home</Link>
 
-                    </NavItem>
-                    <h3>|</h3>
-                    <NavItem>
+                    </NavItem> */}
+                    {/* <h3>|</h3> */}
+                    <NavItem style = {{paddingRight: "20px"}}>
 
                         <Link to="/dashboard" style = {{color: "white"}}>Dashboard</Link>
 
                     </NavItem>
-                    <h3>|</h3>
-                    <NavItem>
+                    <br/><br/>
+                    {/* <h3>|</h3> */}
+                    <NavItem style = {{paddingRight: "20px"}}>
 
                         <Link to="/about" style = {{color: "white"}}>About us</Link>
                     </NavItem>
-                    <h3>|</h3>
-                    <NavItem>
+                    <br/><br/>
+                    {/* <h3>|</h3> */}
+                    <NavItem style = {{paddingRight: "20px"}}>
                         <Link to="/planet" style = {{color: "white"}}>Planets</Link>
 
                     </NavItem>
-                    <h3>|</h3>
-                    <NavItem>
+                    <br/><br/>
+                    {/* <h3>|</h3> */}
+                    <NavItem style = {{paddingRight: "20px"}}>
                         <Link to="/book" style = {{color: "white"}}>Book Flights</Link>
                     </NavItem>
-                    <h3>|</h3>
-                    <NavItem>
+                    <br/><br/>
+                    {/* <h3>|</h3> */}
+                    <NavItem style = {{paddingRight: "20px"}}>
                         <Link to="/registerCompany" style = {{color: "white"}}>Register a Company</Link>
                     </NavItem>
-                    <h3>|</h3>
-                    <NavItem>
+                    <br/><br/>
+                    {/* <h3>|</h3> */}
+                    <NavItem style = {{paddingRight: "20px"}}>
                         <Link to="/ship" style = {{color: "white"}}>Register a Ship</Link>
                     </NavItem>
-                    <h3>|</h3>
+                    <br/><br/>
+                    {/* <h3>|</h3> */}
                     <NavItem>
                         <Link to="/flight" style = {{color: "white"}}>Register a Flight</Link>
                     </NavItem>
