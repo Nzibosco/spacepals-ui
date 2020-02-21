@@ -33,7 +33,7 @@ export class RegisterCompanyComponent extends React.Component<any,any> {
             name:this.state.name,
             address:this.state.address
         }
-        Axios.put('http://localhost:8080/spacepals/users', comp).then(res => {
+        Axios.put('http://projecttwodo-env.fryh9swbjr.us-east-2.elasticbeanstalk.com/users', comp).then(res => {
             console.log(res);
         })
     }
@@ -46,9 +46,9 @@ export class RegisterCompanyComponent extends React.Component<any,any> {
                     margin:"10% 30%"
                 }}>
                     <div style={{
-                    backgroundColor:"white",
+                    backgroundColor:"inherit",
                     outlineWidth:"2px",
-                    outlineColor:"black"
+                    outlineColor:"black", color: "white"
                 }}>
                     <h1>Welcome</h1>
                     <br></br>

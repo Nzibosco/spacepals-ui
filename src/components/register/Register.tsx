@@ -45,7 +45,7 @@ export class Register extends React.Component<IRegisterProps, IRegisterState>{
             password: this.state.password,
             gender: "LGBTQ"
         }
-        axios.post("http://localhost:8080/spacepals/users",
+        axios.post("http://projecttwodo-env.fryh9swbjr.us-east-2.elasticbeanstalk.com/users",
             userData
     ).then(response =>{
         console.log(response)

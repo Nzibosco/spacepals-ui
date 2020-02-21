@@ -46,7 +46,7 @@ export class CreateAircraftComponent extends React.Component<any,any> {
             aircraft:aircraft
         }
         console.log(shipdto)
-        Axios.post('http://localhost:8080/spacepals/aircrafts', shipdto).then(res => {
+        Axios.post('http://projecttwodo-env.fryh9swbjr.us-east-2.elasticbeanstalk.com/aircrafts', shipdto).then(res => {
             console.log(res)
         })
     }
@@ -59,9 +59,10 @@ export class CreateAircraftComponent extends React.Component<any,any> {
                     margin:"10% 30%"
                 }}>
                     <div style={{
-                    backgroundColor:"white",
+                    background: "inherit",
                     outlineWidth:"2px",
-                    outlineColor:"black"
+                    outlineColor:"black",
+                    color: "white"
                 }}>
                     <h1>Create your Ship</h1>
                     <br></br>
