@@ -54,7 +54,7 @@ export class CreateAircraftComponent extends React.Component<any,any> {
     render() {
         return(
             <div>
-                <SpaceNav/>
+                {/* <SpaceNav/> */}
                 <div style = {{
                     margin:"10% 30%"
                 }}>
