@@ -13,8 +13,9 @@ import Navbar from './utils/navbar/Navbar';
 import { DashboardComponent } from './components/dashboard-component/regular-user/DashboardComponent';
 
 import { RegisterCompanyComponent } from './components/register-company-component/RegisterCompanyComponent';
-import { CreateAircraftComponent } from './components/create-aircraft-component/CreateAircraftComponent';
+ import { CreateAircraftComponent } from './components/create-aircraft-component/CreateAircraftComponent';
 import { CreateFlightComponent } from './components/create-flight-component/CreateFlightComponent';
+import { PaymentComponent } from './components/payment/PaymentComponent';
 
 const App: React.FC = () => {
   return (
@@ -25,6 +26,7 @@ const App: React.FC = () => {
         <Router>
         <Navbar/>
           <Switch>
+          <Route path='/payment' component={PaymentComponent}/>
             <Route path='/flight' component = { CreateFlightComponent}/>
             <Route path='/ship' component = {CreateAircraftComponent} />
             <Route path = '/planet' component = {DestinationComponent}/>
