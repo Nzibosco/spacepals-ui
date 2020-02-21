@@ -1,7 +1,5 @@
 import React, { SyntheticEvent } from 'react'
 import { Form, FormGroup, Label, Col, Input, Button } from 'reactstrap'
-import SpaceNav from '../../utils/navbar/Navbar'
-//import {apiLogin} from '../../remote/login-clients/login-clients'
 
 interface ILoginState {
     username: string
@@ -40,7 +38,6 @@ export class LoginComponent extends React.Component<ILoginProps, ILoginState> {
     submitLogin = async(event: SyntheticEvent) => {
         event.preventDefault();
         this.props.updateCurrentUser(this.state.username, this.state.password)
-        //apiLogin(this.state.username, this.state.password)
 
         this.setState({
             ...this.state,
@@ -53,7 +50,6 @@ export class LoginComponent extends React.Component<ILoginProps, ILoginState> {
     render() {
         return (
             <div>
-                <SpaceNav/>
                 <div className= "text-center" style = {{
                     margin:"10% 30%"
                 }}>

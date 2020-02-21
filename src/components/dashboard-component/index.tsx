@@ -19,7 +19,7 @@ interface IDashboardProps {
 
 export class Dashboard extends React.Component<IDashboardProps, IDashboardState> {
 
-    constructor(props:any){
+    constructor(props:IDashboardProps){
         super(props)
         this.state ={
             role: ''
@@ -27,14 +27,15 @@ export class Dashboard extends React.Component<IDashboardProps, IDashboardState>
     }
 
 render(){
+    console.log(this.props.currentUser)
     return(
         <>
 
-            {
-                this.props.currentUser === "basic_user" ? 
+            {/* {
+                this.props.currentUser.role === "basic_user" ? 
                 <DashboardComponent/> :
                 <ManagerDashboard/>
-            }
+            } */}
 
         </>
     )

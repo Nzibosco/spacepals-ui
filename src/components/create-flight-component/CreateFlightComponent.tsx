@@ -1,10 +1,17 @@
-import React, { SyntheticEvent } from 'react'
-import { Form, FormGroup, Label, Col, Input, Button } from 'reactstrap'
-import SpaceNav from '../../utils/navbar/Navbar'
+import React, { SyntheticEvent, useState } from 'react'
+import { Form, FormGroup, Label, Col, Input, Button, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap'
 import Axios from 'axios'
+import { Redirect } from 'react-router'
+import {withRouter} from 'react-router-dom'
 
-export class CreateFlightComponent extends React.Component<any,any> {
-    constructor(props:any) {
+interface ICreateFlightProps {
+    currentUser: any
+    destinations: any[]
+    getAllPlanets: () => void
+}
+
+export class CreateFlightComponent extends React.Component<ICreateFlightProps,any> {
+    constructor(props:ICreateFlightProps) {
         super(props)
         this.state= {
             cid:0,      //company id
@@ -12,7 +19,9 @@ export class CreateFlightComponent extends React.Component<any,any> {
             dept:'',    //departure
             dest:'',    //destination
             cost:0,     //cost
-
+            errorMessage:'',
+            redirect:false,
+            open:false
         }
     }
 
@@ -51,8 +60,8 @@ export class CreateFlightComponent extends React.Component<any,any> {
     submitFlight = (event: SyntheticEvent) => {
         event.preventDefault()
         let flight = {
-            //departure:this.state.dept,
-            //destination:this.state.dest,
+            departure:this.state.dept,
+            destination:this.state.dest,
             cost:this.state.cost
         }
         let flightdto = {
@@ -61,17 +70,58 @@ export class CreateFlightComponent extends React.Component<any,any> {
             flight:flight
         }
         console.log(flightdto)
-        Axios.post('http://projecttwodo-env.fryh9swbjr.us-east-2.elasticbeanstalk.com/flights', flightdto).then(res => {
+        //Axios.post('http://projecttwodo-env.fryh9swbjr.us-east-2.elasticbeanstalk.com/flights', flightdto).then(res => {
+        Axios.post('http://localhost:8080/spacepals/flights', flightdto).then(res=> {
             console.log(res);
         })
     }
 
+    componentDidMount(){
+        for(let i = 0 ; i < this.props.currentUser.companies.length; i++) {
+            if(this.props.currentUser.companies[i].aircrafts.length !== 0) {
+                this.setState({
+                    ...this.state,
+                    sid:this.props.currentUser.companies[i].aircrafts[0].id
+                })
 
+                if (this.props.destinations.length === 0) {
+                    this.props.getAllPlanets()
+                }
+
+                return
+            }
+        }
+        if(this.state.sid === 0) {
+            this.setState({
+                ...this.state,
+                errorMessage:'Must Register Aircraft First',
+                redirect:true
+            })
+        }
+       
+    }
 
     render() {
+
+        const toggle = () => {
+            this.setState({
+                ...this.state,
+                open:!this.state.open
+            })
+        }
+
+        const dropdownDisplay = this.props.destinations.map(planet => {
+            return <option key={planet.englishName} value={planet.englishName}>{planet.englishName}</option>
+        })
+        
+        if(this.state.redirect) {
+        return <Redirect to="/ship"/> 
+        }
+        
         return(
-            <div>
-                {/* <SpaceNav/> */}
+             
+            <div className='no'>
+                
                 <div style = {{
                     margin:"10% 30%"
                 }}>
@@ -79,7 +129,7 @@ export class CreateFlightComponent extends React.Component<any,any> {
                     backgroundColor:"inherit",
                     outlineWidth:"2px",
                     outlineColor:"black", color: "white"
-                }}>
+                }} className='appender'>
                     <h1>Welcome</h1>
                     <br></br>
                     <br></br>
@@ -109,27 +159,19 @@ export class CreateFlightComponent extends React.Component<any,any> {
                             </Col>
                         </FormGroup>
                         <FormGroup row>
-                            <Label for="exampleDeparture" sm={2}>Departure</Label>
+                            <Label for="exampleDeparture" sm={2}>Departing</Label>
                             <Col sm={10}>
-                                <Input required
-                                    type="text"
-                                    name="departure"
-                                    id="exampleDeparture"
-                                    placeholder="put departure here"
-                                    value={this.state.dept}
-                                    onChange={this.updateDept} />
+                                <select onChange={this.updateDept}>
+                                    {dropdownDisplay}
+                                </select>
                             </Col>
                         </FormGroup>
                         <FormGroup row>
                             <Label for="exampleDestination" sm={2}>Destination</Label>
                             <Col sm={10}>
-                                <Input required
-                                    type="text"
-                                    name="destination"
-                                    id="exampleDestination"
-                                    placeholder="put destination here"
-                                    value={this.state.dest}
-                                    onChange={this.updateDest} />
+                            <select onChange={this.updateDest}>
+                                    {dropdownDisplay}
+                                </select>
                             </Col>
                         </FormGroup>
                         <FormGroup row>
@@ -144,9 +186,9 @@ export class CreateFlightComponent extends React.Component<any,any> {
                                     onChange={this.updateCost} />
                             </Col>
                         </FormGroup>
-                        <Button color="primary">Create Flight</Button>
+                        <Button className='redirect' color="primary">Create Flight</Button>
                     </Form>
-                    <p>{this.props.loginMessage}</p>
+                    <p>{this.state.errorMessage}</p>
                     </div>
                 </div>
             </div>
