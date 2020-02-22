@@ -96,6 +96,7 @@ export class CreateFlightComponent extends React.Component<ICreateFlightProps,an
          Axios.post('http://localhost:8080/spacepals/flights', flightdto).then(res=> {
              console.log(res);
          })
+
     }
 
     componentDidMount(){
