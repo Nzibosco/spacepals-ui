@@ -27,10 +27,10 @@ const App: React.FC = () => {
         <Router>
         <Navbar/>
           <Switch>
-            <Route path='/flight' component = { CreateFlightComponent}/>
             <Route path='/book' component = { BookFlightComponent}/>
             <Route path='/ship' component = {CreateAircraftComponent} />
             <Route path = '/planet' component = {DestinationComponent}/>
+            <Route path='/flight' component = { CreateFlightComponent}/>
             <Route path='/login' component = { LoginComponent } />
             <Route path = '/dashboard' component = {DashboardComponent}/>
             <Route path='/about' component = { AboutComponent}/>
