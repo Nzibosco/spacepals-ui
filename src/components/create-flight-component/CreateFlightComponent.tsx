@@ -17,11 +17,14 @@ export class CreateFlightComponent extends React.Component<ICreateFlightProps,an
             cid:0,      //company id
             sid:0,      //ship id
             dept:'',    //departure
+            deptobj:'',
             dest:'',    //destination
+            destobj:'',
             cost:0,     //cost
             errorMessage:'',
             redirect:false,
             open:false
+
         }
     }
 
@@ -59,21 +62,40 @@ export class CreateFlightComponent extends React.Component<ICreateFlightProps,an
 
     submitFlight = (event: SyntheticEvent) => {
         event.preventDefault()
+
+        // Axios.get('http://localhost:8080/spacepals/planets/byname/' + this.state.dept).then( res => {
+        //     console.log(res);
+        //     this.setState({
+        //         ...this.state,
+        //         deptobj:res.data
+        //     })
+        // })
+
+        // Axios.get('http://localhost:8080/spacepals/planets/byname/' + this.state.dest).then( res => {
+        //     console.log(res);
+        //     this.setState({
+        //         ...this.state,
+        //         destobj:res.data
+        //     })
+        // })
+
         let flight = {
-            departure:this.state.dept,
-            destination:this.state.dest,
+            //departure:this.state.deptobj,
+            //destination:this.state.destobj,
             cost:this.state.cost
         }
         let flightdto = {
             companyId:this.state.cid,
             shipId:this.state.sid,
+            deptName:this.state.dept,
+            destName:this.state.dest,
             flight:flight
         }
         console.log(flightdto)
         //Axios.post('http://projecttwodo-env.fryh9swbjr.us-east-2.elasticbeanstalk.com/flights', flightdto).then(res => {
-        Axios.post('http://localhost:8080/spacepals/flights', flightdto).then(res=> {
-            console.log(res);
-        })
+         Axios.post('http://localhost:8080/spacepals/flights', flightdto).then(res=> {
+             console.log(res);
+         })
     }
 
     componentDidMount(){
