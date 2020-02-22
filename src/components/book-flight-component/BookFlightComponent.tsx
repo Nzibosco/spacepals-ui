@@ -10,6 +10,7 @@ interface IBookFlightState {
     selectedPlanet: string
     flights: any
     booked: string
+    selectedFlight: number
 }
 
 interface IBookFlightProps {
@@ -24,7 +25,8 @@ export class BookFlightComponent extends React.Component<IBookFlightProps, IBook
             destinations: [],
             selectedPlanet: '',
             flights: [],
-            booked: ''
+            booked: '',
+            selectedFlight: 0
         }
     }
 
@@ -51,6 +53,16 @@ export class BookFlightComponent extends React.Component<IBookFlightProps, IBook
         });
     };
 
+    setChosenFlight = (event: any) => {
+
+        //const { name, value } = event.target;
+        this.setState({
+            ...this.state,
+            selectedFlight: event.target.value
+        });
+        console.log('selected id is: ' + this.state.selectedFlight)
+    };
+
     getFlights = () => {
         Axios.get('http://projecttwodo-env.fryh9swbjr.us-east-2.elasticbeanstalk.com/flights')
             .then(res => {
@@ -65,6 +77,7 @@ export class BookFlightComponent extends React.Component<IBookFlightProps, IBook
     }
 
     displayFlights = () => {
+        if(this.state.selectedPlanet){
         if (this.state.flights) {
             return (
                 <div style={{ overflowX: "auto" }}>
@@ -83,11 +96,13 @@ export class BookFlightComponent extends React.Component<IBookFlightProps, IBook
                         </thead>
                         <tbody>
                             {
-                                this.state.flights.map((flight: any, i: any) => {
+                                this.state.flights.filter((flight: any, i: any) => {
+                                    return flight.destination.planetName === this.state.selectedPlanet 
+                                }).map((flight: any, i: any) =>{
                                     return (
                                         <tr id={i}>
                                             <th scope="row">
-                                                <input type="radio" name="flight" value={flight.id}></input>
+                                                <input type="radio" name="flight" value={flight.id} onClick = {this.setChosenFlight}></input>
                                             </th>
                                             <td>{flight.id}</td>
                                             <td>{flight.duration}</td>
@@ -98,13 +113,18 @@ export class BookFlightComponent extends React.Component<IBookFlightProps, IBook
                                             <td>{flight.destination.planetName}</td>
                                         </tr>
                                     )
-                                })
+                                    })
                             }
                         </tbody>
                     </table>
                 </div>
             )
+        } else{
+            return (
+                <p style ={{color: "red"}}>No available flights to this destination</p>
+            )
         }
+    }
     }
 
     bookFlight = () => {
@@ -207,6 +227,7 @@ export class BookFlightComponent extends React.Component<IBookFlightProps, IBook
                         <div id="flights">
                             <h4>Select flights below: </h4>
                             <p> Available flights for {this.state.selectedPlanet}</p>
+                    <p>Selected flight: {this.state.selectedFlight}</p>
                             {this.displayFlights()}
                             <br />
                             {this.payment()}
