@@ -1,5 +1,5 @@
 import React from 'react'
-import SpaceNav from '../../utils/navbar/Navbar'
+import { Link } from 'react-router-dom'
 
 
 
@@ -12,11 +12,8 @@ export class AboutComponent extends React.Component<any,any> {
                 {/* <Navbar/> */}
                 {/* <SpaceNav/> */}
                 <div className = "jumbotron text-center" 
-                style = {{backgroundColor: "white", 
-                //backgroundImage: "url(https://cdnb.artstation.com/p/assets/images/images/006/585/191/large/malte-madsen-spaceship-concept-refined-final.jpg?1499717461)",
-                backgroundSize: "100%",
-                backgroundAttachment: "fixed",
-                backgroundRepeat: "no-repeat"
+                style = {{
+                width:"70%", margin:"auto", paddingTop:"25px"
                 
         
                 }}>
@@ -28,7 +25,11 @@ export class AboutComponent extends React.Component<any,any> {
                     <h2>We connect you with high quality spaceflight providers, making your dream destination a reality."</h2>
                     <h4 className = "lead">- Bosco said this</h4>
                     </blockquote>
+
+                    <br/>
+                <Link to= "/dashboard">Back to dashboard</Link>
                 </div>
+                
             </div>
         )
     }

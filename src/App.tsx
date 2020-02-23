@@ -9,8 +9,8 @@ import { ApiComponent } from './components/api-component/ApiComponent';
 import DestinationComponent from './components/destinations/DestinationContainer';
 import { AboutComponent } from './components/about-us-component/AboutComponent';
 import {Register} from './components/register/Register'
-import Navbar from './utils/navbar/Navbar';
-import { DashboardComponent } from './components/dashboard-component/regular-user/DashboardComponent';
+import NavbarComponent from './utils/navbar/NavbarContainer';
+import  DashboardComponent  from './components/dashboard-component/regular-user/DashboardContainer';
 import { RegisterCompanyComponent } from './components/register-company-component/RegisterCompanyComponent';
 import { CreateAircraftComponent } from './components/create-aircraft-component/CreateAircraftComponent';
 import CreateFlightComponent from './components/create-flight-component/CreateFlightContainer';
@@ -25,7 +25,7 @@ const App: React.FC = () => {
       <Provider store={store}>
         
         <Router>
-        <Navbar/>
+        <NavbarComponent/>
           <Switch>
             <Route path='/book' component = { BookFlightComponent}/>
             <Route path='/ship' component = {CreateAircraftComponent} />

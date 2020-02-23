@@ -1,7 +1,7 @@
 import React, { SyntheticEvent } from 'react';
 import { Form, FormGroup, Label, Col, Input, Button } from 'reactstrap';
 import Axios from 'axios';
-import SpaceNav from '../../utils/navbar/Navbar';
+
 
 export class RegisterCompanyComponent extends React.Component<any,any> {
 
