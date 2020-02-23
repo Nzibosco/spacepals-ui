@@ -94,9 +94,12 @@ export class BookFlightComponent extends React.Component<IBookFlightProps, IBook
    id:any;
 
     bookFlight = () => {
-        // this.setPaid();
+        let flight = {
+            id: this.state.selectedFlight
+        }
         if(this.state.paid){
-            Axios.put('http://projecttwodo-env.fryh9swbjr.us-east-2.elasticbeanstalk.com/flights/' + this.state.selectedFlight + '')
+            // Axios.put('http://projecttwodo-env.fryh9swbjr.us-east-2.elasticbeanstalk.com/flights', flight)
+            Axios.put("http://projecttwodo-env.fryh9swbjr.us-east-2.elasticbeanstalk.com/flights/book/" + this.state.selectedFlight)
             .then(res => {
                 if(res.status === 200){
                 console.log(res);
