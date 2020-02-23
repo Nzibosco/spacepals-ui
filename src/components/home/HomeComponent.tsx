@@ -38,7 +38,7 @@ export class HomeComponent extends React.Component {
                     </div>
                     <div className = "row" style= {{paddingTop: "3%"}}>
                         <div className="col-12">
-                        <div className = "card card-primary" style = {{borderRadius: "25%", borderStyle: "solid",background: "blue",
+                        <div className = "card card-primary" style = {{borderRadius: "25%", borderStyle: "solid",background: "green",
                         width: "50%", margin: "auto", borderColor: "white", color: "white"
                         }}>
                             <div className = "card-body card-primary text-center">
