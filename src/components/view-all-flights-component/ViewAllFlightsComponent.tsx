@@ -4,8 +4,9 @@ import axios from 'axios';
 import { getFlights } from '../../remote/get-flights/get-all-flights';
 
 interface IFlightState {
-    body: any
+    //body: any
     check: String
+    flights: any
 }
 
 interface IFlightProps {
@@ -18,8 +19,9 @@ export class ViewAllFlights extends React.Component<IFlightProps, IFlightState> 
         super(props);
 
         this.state = {
-            body: null,
-            check: ""
+            //body: null,
+            check: "",
+            flights: null
 
         };
     }
@@ -46,25 +48,81 @@ export class ViewAllFlights extends React.Component<IFlightProps, IFlightState> 
         let body1 = await getFlights()
         this.setState({
             ...this.state,
-            body: body1
+            flights: body1
+            //body: body1
         })
     }
 
-    render() {
-        if (this.state.body != null) {
-            console.log("hohoho" + this.state.body[0].id)
+    displayFlights = () => {
+        if(this.state.flights){
+            if (this.state.flights.length > 0) {
+                return (
+                    <div style={{ overflowX: "auto" ,
+                    width: "80%", borderRadius: "20px",
+                    margin: "auto", paddingTop: "20px"
+                    
+                    }}>
+                        <table className="table table-hover table-borderless table-dark">
+                            <thead>
+                                <tr>
+                                   
+                                    <th scope="col">flight Id</th>
+                                    <th scope="col">Duration</th>
+                                    <th scope="col">Cost</th>
+                                    <th scope="col">Available seats</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Departure</th>
+                                    <th scope="col">Destination</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    this.state.flights.map((flight: any, i: any) => {
+                                        return (
+                                            <tr id={i}>
+                                            
+                                                <td>{flight.id}</td>
+                                                <td>{flight.duration}</td>
+                                                <td>${flight.cost}</td>
+                                                <td>{flight.availableSeats}</td>
+                                                <td>{flight.status}</td>
+                                                <td>{flight.departure.planetName}</td>
+                                                <td>{flight.destination.planetName}</td>
+                                            </tr>
+                                        )
+                                    })
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                )
+            } else {
+                return (
+                    <p style={{ color: "red" }}>No available flights. Check again later</p>
+                )
+            }
+        } else{
             return (
-                <Table bordered>
-                    <thead>
-                        <tr>
-                            <th>Flight Id</th>
-                            <th>Flight Cost</th>
-                            <th>Total Flight Duration</th>
-                            <th>Available Seats</th>
-                            <th>Destination</th>
-                            <th>Departure Point</th>
-                            <th>Status</th>
-                        </tr>
+                <h3>Sorry... No available flights. Check again soon</h3>
+            )
+        }
+    }
+
+    render() {
+        // if (this.state.body != null) {
+        //     console.log("hohoho" + this.state.body[0].id)
+        //     return (
+        //         <Table bordered>
+        //             <thead>
+        //                 <tr>
+        //                     <th>Flight Id</th>
+        //                     <th>Flight Cost</th>
+        //                     <th>Total Flight Duration</th>
+        //                     <th>Available Seats</th>
+        //                     <th>Destination</th>
+        //                     <th>Departure Point</th>
+        //                     <th>Status</th>
+        //                 </tr>
                         {/* <td>{this.state.body[0].id}</td>
                 <td>{this.state.body[0].cost}</td>
                 <td>{this.state.body[0].flightDate}</td>
@@ -72,25 +130,25 @@ export class ViewAllFlights extends React.Component<IFlightProps, IFlightState> 
                 <td>{this.state.body[0].destination.planetName}</td>
                 <td>{this.state.body[0].departure.planetName}</td>
                 <td>{this.state.body[0].status}</td> */}
-                    </thead>
-                    <tbody>
-                        {this.state.body.map((flight: any, i: number) => {
-                            return (
-                                <tr>
-                                    <td>{this.state.body[i].id}</td>
-                                    <td>{this.state.body[i].cost}</td>
-                                    <td>{this.state.body[i].flightDate}</td>
-                                    <td>{this.state.body[i].availableSeats}</td>
-                                    <td>{this.state.body[i].destination.planetName}</td>
-                                    <td>{this.state.body[i].departure.planetName}</td>
-                                    <td>{this.state.body[i].status}</td>
-                                </tr>
-                            )
-                        })}
-                    </tbody>
-                </Table>
-            )
-        }
+        //             </thead>
+        //             <tbody>
+        //                 {this.state.body.map((flight: any, i: number) => {
+        //                     return (
+        //                         <tr>
+        //                             <td>{this.state.body[i].id}</td>
+        //                             <td>{this.state.body[i].cost}</td>
+        //                             <td>{this.state.body[i].flightDate}</td>
+        //                             <td>{this.state.body[i].availableSeats}</td>
+        //                             <td>{this.state.body[i].destination.planetName}</td>
+        //                             <td>{this.state.body[i].departure.planetName}</td>
+        //                             <td>{this.state.body[i].status}</td>
+        //                         </tr>
+        //                     )
+        //                 })}
+        //             </tbody>
+        //         </Table>
+        //     )
+        // }
 
         /*
         const scheduledFlights = this.props.allFlights.map((flight:any, i: any) => {
@@ -106,11 +164,16 @@ export class ViewAllFlights extends React.Component<IFlightProps, IFlightState> 
         */
         return (
 
-            <div>
-                <Form >
-                    <Button>Le's Button</Button>
-                </Form>
-            </div>
+            <>
+                {this.displayFlights()}
+            </>
+
+            // <div>
+            //     {/* <Form >
+            //         <Button>Le's Button</Button>
+            //     </Form> */}
+                
+            // </div>
 
         )
         //     })

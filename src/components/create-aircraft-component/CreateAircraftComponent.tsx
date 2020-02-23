@@ -1,5 +1,4 @@
 import React, { SyntheticEvent } from 'react';
-import SpaceNav from '../../utils/navbar/Navbar';
 import { Form, FormGroup, Label, Col, Input, Button } from 'reactstrap';
 import Axios from 'axios';
 

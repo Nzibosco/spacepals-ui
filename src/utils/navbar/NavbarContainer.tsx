@@ -1,6 +1,6 @@
-import { IState } from '../../../reducers/index'
+import { IState } from '../../reducers/index'
 import { connect } from 'react-redux';
-import  {DashboardComponent}  from './DashboardComponent';
+import  NavbarComponent from './Navbar';
 
 const mapStateToProps = (state: IState) => {
     return {
@@ -12,4 +12,4 @@ const mapDispatchToProps = {
 
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(DashboardComponent)
+export default connect(mapStateToProps, mapDispatchToProps)(NavbarComponent)

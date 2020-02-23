@@ -10,7 +10,11 @@ import {
     NavLink,
 } from 'reactstrap';
 
-const SpaceNav = (props: any) => {
+// interface INavProps{
+//     currentUser: any
+// }
+
+const NavbarComponent = (props: any) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggle = () => setIsOpen(!isOpen);
@@ -25,15 +29,20 @@ const SpaceNav = (props: any) => {
             <Collapse isOpen={isOpen} navbar style={{ paddingLeft: "40%", }}>
                 <Nav className="mr-auto" style={{ fontSize: "20px" }}>
 
+                {
+                        props.currentUser ? 
+                        <NavItem style={{paddingRight: "20px"}}>
+                        <Link to="/dashboard" style = {{color: "white"}}>Dashboard</Link>
+                    </NavItem>
+                        : ''
+                    }
+
                     {/* <NavItem>
                         <Link to="/home" style = {{color: "white"}}>Home</Link>
-
                     </NavItem> */}
                     {/* <h3>|</h3> */}
                     {/* <NavItem style = {{paddingRight: "20px"}}>
-
                         <Link to="/dashboard" style = {{color: "white"}}>Dashboard</Link>
-
                     </NavItem>
                     <br/><br/> */}
                     {/* <h3>|</h3> */}
@@ -49,7 +58,7 @@ const SpaceNav = (props: any) => {
                     </NavItem>
                     {/* <br /><br /> */}
                     {/* <h3>|</h3> */}
-                    <NavItem style={{}}>
+                    <NavItem style={{paddingRight:"30px"}}>
                         <Link to="/view-flights" style={{ color: "white" }}>Scheduled Flights</Link>
                     </NavItem>
                     {/* <br /><br /> */}
@@ -67,6 +76,14 @@ const SpaceNav = (props: any) => {
                     {/* <NavItem>
                         <Link to="/flight" style = {{color: "white"}}>Register a Flight</Link>
                     </NavItem> */}
+
+                    {
+                        props.currentUser ? 
+                        <NavItem>
+                        <Link to="/logout" style = {{color: "white"}}>Logout</Link>
+                    </NavItem>
+                        : ''
+                    }
                 </Nav>
             </Collapse>
         
@@ -74,4 +91,4 @@ const SpaceNav = (props: any) => {
     );
 }
 
-export default SpaceNav;
+export default NavbarComponent;

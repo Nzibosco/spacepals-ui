@@ -30,29 +30,34 @@ export class DestinationComponent extends React.Component<IDestinationProps, IDe
     }
 
     // don't touch this function. Planets saved! 
-   savePlanetsInDatabase = () => {
-        console.log("Saving planets into the database!")
-        this.props.allDestinations.map(planet => {
-            let planetData = {
-                planetName: planet.englishName,
-                numberOfMoons: planet.moons? planet.moons.length: 0,
-                gravity: planet.gravity
-            }
+//    savePlanetsInDatabase = () => {
+//         console.log("Saving planets into the database!")
+//         this.props.allDestinations.map(planet => {
+//             let planetData = {
+//                 planetName: planet.englishName,
+//                 numberOfMoons: planet.moons? planet.moons.length: 0,
+//                 gravity: planet.gravity
+//             }
 
-            axios.post('http://localhost:8080/spacepals/planets',
-                planetData
-            ).then(res => {
-                console.log('posted');   
-            })
-        })
-    }
+//             axios.post('http://localhost:8080/spacepals/planets',
+//                 planetData
+//             ).then(res => {
+//                 console.log('posted');   
+//             })
+//         })
+//     }
 
 
 
     render() {
         const displayPlanets = this.props.allDestinations.map((planet: any) => {
             return (
-                <div className="jumbotron">
+                <div className="jumbotron"
+                style={{
+                    width:"50%", margin:"auto",
+                    borderRadius:"20px", paddingBottom: "20px"
+                }}
+                >
                     {/* <button onClick={this.savePlanetsInDatabase}>Check planet</button> */}
                     <div className="jumbotron">
                         <h4>{planet.englishName}</h4>
@@ -76,8 +81,7 @@ export class DestinationComponent extends React.Component<IDestinationProps, IDe
                         ) : (<p>This planet has no moons</p>)}
                         <br></br>
 
-                        <Link to="/book">Schedule a flight to this planet</Link>
-                        <br></br>
+                        <Link to="/dashboard">Schedule a flight to this planet</Link>
                     </div>
                 </div>
             )
