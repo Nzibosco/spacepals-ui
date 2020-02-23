@@ -1,6 +1,6 @@
 import React from 'react'
-import { Redirect } from 'react-router'
-import Axios from 'axios'
+// import { Redirect } from 'react-router'
+// import Axios from 'axios'
 
 interface ILogoutState {
 
@@ -21,7 +21,7 @@ export class LogoutComponent extends React.Component<ILogoutProps, ILogoutState>
         // Axios.get('http://localhost:8080/spacepals/auth').then(res => {
         //      console.log(res);
         // })
-        window.location.replace('http://localhost:3000/home')
+        window.location.replace('http://project-two-ui.s3-website.us-east-2.amazonaws.com/')
     }
 
     // refresh = () => {

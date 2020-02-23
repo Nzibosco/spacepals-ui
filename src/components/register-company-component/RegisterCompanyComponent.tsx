@@ -1,6 +1,7 @@
 import React, { SyntheticEvent } from 'react';
 import { Form, FormGroup, Label, Col, Input, Button } from 'reactstrap';
 import Axios from 'axios';
+import { Redirect } from 'react-router';
 
 
 export class RegisterCompanyComponent extends React.Component<any,any> {
@@ -9,7 +10,9 @@ export class RegisterCompanyComponent extends React.Component<any,any> {
         super(props)
         this.state={
             name:'',
-            address:''
+            address:'',
+            successMessage: '',
+            redirect: false
         }
     }
 
@@ -35,10 +38,34 @@ export class RegisterCompanyComponent extends React.Component<any,any> {
         }
         Axios.put('http://projecttwodo-env.fryh9swbjr.us-east-2.elasticbeanstalk.com/users', comp).then(res => {
             console.log(res);
+            this.setState({
+                ...this.state,
+                successMessage: 'Creating company successfull'
+            })
+
+            this.setState({
+                ...this.state,
+                name: '',
+                address: '',
+                redirect: true
+            })
+
+        }).catch((err) =>{
+            console.log(err);
+            this.setState({
+                successMessage: 'Failed to create a company. Try again'
+            })
         })
     }
 
     render() {
+        if(this.state.redirect){
+            return (
+                <>
+                    <Redirect to="/dashboard"/>
+                </>
+            )
+        }
         return(
             <div>
                 {/* <SpaceNav/> */}
@@ -80,7 +107,7 @@ export class RegisterCompanyComponent extends React.Component<any,any> {
                         </FormGroup>
                         <Button color="primary">Create Company</Button>
                     </Form>
-                    <p>{this.props.loginMessage}</p>
+                    <p>{this.state.successMessage}</p>
                     </div>
                 </div>
             </div>
