@@ -51,6 +51,19 @@ export class CreateAircraftComponent extends React.Component<any, any> {
         })
     }
 
+    companiesDisplay = () => {
+        if(this.props.currentuser.companies.length){
+            this.props.currentUser.companies.map((comp:any) => {
+                return <option key={comp.id} value={comp.name}>{comp.name}</option>
+            })
+        } else{
+            return(
+                <option value = "">No companies found</option>
+            )
+        }
+    }
+    
+
     render() {
         if (this.props.currentUser.companies.length) {
 
@@ -84,7 +97,7 @@ export class CreateAircraftComponent extends React.Component<any, any> {
                                 </FormGroup>
                                 <FormGroup row>
                                     <Label for="companyID" sm={2}>Company ID</Label>
-                                    <Col sm={10}>
+                                    {/* <Col sm={10}>
                                         <Input required
                                             type="number"
                                             name="companyID"
@@ -92,7 +105,13 @@ export class CreateAircraftComponent extends React.Component<any, any> {
                                             placeholder="company id"
                                             value={this.state.cid}
                                             onChange={this.updateID} />
-                                    </Col>
+                                            <Label for="exampleDeparture" sm={2}>Departing</Label> */}
+                            <Col sm={10}>
+                                <select onChange={this.updateID}>
+                                    {this.companiesDisplay()}
+                                </select>
+                            </Col>
+                                    {/* </Col> */}
                                 </FormGroup>
                                 <FormGroup row>
                                     <Label for="exampleSize" sm={2}>Capacity</Label>
