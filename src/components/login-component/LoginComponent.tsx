@@ -4,7 +4,7 @@ import { Redirect } from 'react-router'
 
 interface ILoginState {
     username: string
-    password: string
+    password: string 
 }
 
 interface ILoginProps {

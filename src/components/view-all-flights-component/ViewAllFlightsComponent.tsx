@@ -4,8 +4,8 @@ import axios from 'axios';
 import { getFlights } from '../../remote/get-flights/get-all-flights';
 
 interface IFlightState {
-body: any
-check: String
+    body: any
+    check: String
 }
 
 interface IFlightProps {
@@ -19,7 +19,7 @@ export class ViewAllFlights extends React.Component<IFlightProps, IFlightState> 
 
         this.state = {
             body: null,
-            check:""
+            check: ""
 
         };
     }
@@ -51,40 +51,59 @@ export class ViewAllFlights extends React.Component<IFlightProps, IFlightState> 
     }
 
     render() {
-        if(this.state.body != null){
-            console.log("hohoho"+this.state.body[0].id)
+        if (this.state.body != null) {
+            console.log("hohoho" + this.state.body[0].id)
             return (
-            <Table bordered>
-            <thead>
-                <tr>
-                <th>Flight Id</th>
-                <th>Flight Cost</th>
-                <th>Total Flight Duration</th>
-                <th>Available Seats</th>
-                <th>Destination</th>
-                <th>Departure Point</th>
-                <th>Status</th>
-                </tr>
-                <td>{this.state.body[0].id}</td>
+                <Table bordered>
+                    <thead>
+                        <tr>
+                            <th>Flight Id</th>
+                            <th>Flight Cost</th>
+                            <th>Total Flight Duration</th>
+                            <th>Available Seats</th>
+                            <th>Destination</th>
+                            <th>Departure Point</th>
+                            <th>Status</th>
+                        </tr>
+                        {/* <td>{this.state.body[0].id}</td>
                 <td>{this.state.body[0].cost}</td>
                 <td>{this.state.body[0].flightDate}</td>
                 <td>{this.state.body[0].availableSeats}</td>
                 <td>{this.state.body[0].destination.planetName}</td>
                 <td>{this.state.body[0].departure.planetName}</td>
-                <td>{this.state.body[0].status}</td>
-                {/* <td>{flight.departurePoint}</td>
-                <td>{flight.departureTime}</td>
-                <td>{flight.flightTime}</td>
-                <td>{flight.seats}</td>
-                <td>{flight.points}</td>
-                <td>{flight.cost}</td> */}
-            </thead>
-        </Table>
+                <td>{this.state.body[0].status}</td> */}
+                    </thead>
+                    <tbody>
+                        {this.state.body.map((flight: any, i: number) => {
+                            return (
+                                <tr>
+                                    <td>{this.state.body[i].id}</td>
+                                    <td>{this.state.body[i].cost}</td>
+                                    <td>{this.state.body[i].flightDate}</td>
+                                    <td>{this.state.body[i].availableSeats}</td>
+                                    <td>{this.state.body[i].destination.planetName}</td>
+                                    <td>{this.state.body[i].departure.planetName}</td>
+                                    <td>{this.state.body[i].status}</td>
+                                </tr>
+                            )
+                        })}
+                    </tbody>
+                </Table>
             )
         }
 
-
-        //const currentFlights = this.props.allFlights.map((flight:any) => {
+        /*
+        const scheduledFlights = this.props.allFlights.map((flight:any, i: any) => {
+                if (this.props.allFlights.length != 0) {
+                    <td>{this.state.body[0].id}</td>
+                    <td>{this.state.body[0].cost}</td>
+                    <td>{this.state.body[0].flightDate}</td>
+                    <td>{this.state.body[0].availableSeats}</td>
+                    <td>{this.state.body[0].destination.planetName}</td>
+                    <td>{this.state.body[0].departure.planetName}</td>
+                    <td>{this.state.body[0].status}
+                }
+        */
         return (
 
             <div>
