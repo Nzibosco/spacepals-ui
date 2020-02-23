@@ -3,7 +3,7 @@ import { Form, FormGroup, Label, Col, Input, Button } from 'reactstrap'
 
 interface ILoginState {
     username: string
-    password: string
+    password: string 
 }
 
 interface ILoginProps {
@@ -17,7 +17,7 @@ export class LoginComponent extends React.Component<ILoginProps, ILoginState> {
         super(props)
         this.state = {
             username:'',
-            password:''
+            password:'',
         }
     }
 
