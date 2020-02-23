@@ -31,17 +31,17 @@ export class HomeComponent extends React.Component {
                                     "It’s one small step for man, one giant leap for mankind."</h4>
                                     <p className = "btn btn-primary">- Neil Armstrong</p>
                                 </blockquote>
-                                <h1 className="display-4 text-danger" style={{ fontWeight: 800, fontSize: "90px" }}>SpacePals</h1>
+                                <h1 className="display-4 text-danger" style={{ fontWeight: 700, fontSize: "90px" }}>SpacePals</h1>
                                 
                             </div>  
                         </div>
                     </div>
                     <div className = "row" style= {{paddingTop: "3%"}}>
                         <div className="col-12">
-                        <div className = "card card-primary" style = {{borderRadius: "25%", borderStyle: "solid",background: "green",
+                        <div className = "card bg-dark" style = {{borderRadius: "25%", borderStyle: "solid",
                         width: "50%", margin: "auto", borderColor: "white", color: "white"
                         }}>
-                            <div className = "card-body card-primary text-center">
+                            <div className = "card-body text-center">
                             <p className="btn btn-primary"><Link to= "/login" style = {{color:"white"}} >Login</Link></p>
                             <h4>New user? Click <Link to='/register' style={{color:"red"}}>here</Link> to register</h4>
                             </div>
