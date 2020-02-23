@@ -2,6 +2,7 @@ import React, { SyntheticEvent } from 'react';
 import { Table, Navbar, Form, Button } from 'reactstrap';
 import axios from 'axios';
 import { getFlights } from '../../remote/get-flights/get-all-flights';
+import { Link } from 'react-router-dom';
 
 interface IFlightState {
     body: any
@@ -54,7 +55,7 @@ export class ViewAllFlights extends React.Component<IFlightProps, IFlightState> 
         if (this.state.body != null) {
             console.log("hohoho" + this.state.body[0].id)
             return (
-                <Table bordered>
+                <Table>
                     <thead>
                         <tr>
                             <th>Flight Id</th>
@@ -88,6 +89,11 @@ export class ViewAllFlights extends React.Component<IFlightProps, IFlightState> 
                             )
                         })}
                     </tbody>
+                    <tbody>
+                            <td>Explore the cosmos! Login and book your flight today!</td>
+                            <td><Link to='/login'>CLICK ME to Login</Link></td>
+                            <td><Link to='/planets'>CLICK ME for Potential Planet Options!</Link></td>
+                    </tbody>
                 </Table>
             )
         }
@@ -105,13 +111,10 @@ export class ViewAllFlights extends React.Component<IFlightProps, IFlightState> 
                 }
         */
         return (
-
-            <div>
-                <Form >
-                    <Button>Le's Button</Button>
-                </Form>
+            <div className='container'>
+                <div style = {{color: "white", paddingLeft: "15px", textAlign: "center"}}></div>
+                <h5 style = {{borderStyle: "solid", borderColor: "violet", borderRadius: "25px",backgroundColor:"black"}}><Link to="/login">Login and</Link></h5>
             </div>
-
         )
         //     })
         //     if (this.props.allFlights) {
