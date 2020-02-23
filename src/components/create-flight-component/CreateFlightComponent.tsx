@@ -93,7 +93,7 @@ export class CreateFlightComponent extends React.Component<ICreateFlightProps,an
         }
         console.log(flightdto)
         //Axios.post('http://projecttwodo-env.fryh9swbjr.us-east-2.elasticbeanstalk.com/flights', flightdto).then(res => {
-         Axios.post('http://localhost:8080/spacepals/flights', flightdto).then(res=> {
+         Axios.post('http://projecttwodo-env.fryh9swbjr.us-east-2.elasticbeanstalk.com/flights', flightdto).then(res=> {
              console.log(res);
          })
 
