@@ -11,11 +11,15 @@ import { AboutComponent } from './components/about-us-component/AboutComponent';
 import {Register} from './components/register/Register'
 import Navbar from './utils/navbar/Navbar';
 import { DashboardComponent } from './components/dashboard-component/regular-user/DashboardComponent';
-
 import { RegisterCompanyComponent } from './components/register-company-component/RegisterCompanyComponent';
  import { CreateAircraftComponent } from './components/create-aircraft-component/CreateAircraftComponent';
 import { CreateFlightComponent } from './components/create-flight-component/CreateFlightComponent';
 import { PaymentComponent } from './components/payment/PaymentComponent';
+import LogoutComponent  from './components/logout-component/LogoutContainer';
+import { BookFlightComponent } from './components/book-flight-component/BookFlightComponent';
+import { ManagerDashboard } from './components/dashboard-component/managers/ManagerDashboard';
+import { PastCompanyFlightsComponent } from './components/past-company-flight-component.tsx/PastCompanyFlightComponent';
+import { OpenCompanyFlightsComponent } from './components/open-company-flight-component/OpenCompanyFlightsComponent';
 
 const App: React.FC = () => {
   return (
@@ -26,8 +30,12 @@ const App: React.FC = () => {
         <Router>
         <Navbar/>
           <Switch>
-          <Route path='/payment' component={PaymentComponent}/>
+            <Route path='/man-open-flights' component={OpenCompanyFlightsComponent}/>
+            <Route path='/man-past-flights' component={PastCompanyFlightsComponent}/>
+            <Route path='/mandash' component={ManagerDashboard}/>
+            <Route path='/payment' component={PaymentComponent}/>
             <Route path='/flight' component = { CreateFlightComponent}/>
+            <Route path='/book' component = { BookFlightComponent}/>
             <Route path='/ship' component = {CreateAircraftComponent} />
             <Route path = '/planet' component = {DestinationComponent}/>
             <Route path='/login' component = { LoginComponent } />
@@ -36,6 +44,7 @@ const App: React.FC = () => {
             <Route path='/registerCompany' component = { RegisterCompanyComponent}/>
             <Route path='/apitest' component = { ApiComponent } />
             <Route path = '/register' component = {Register}/>
+            <Route path = '/logout' component = { LogoutComponent}/>
             <Route path = '/' component = {HomeComponent}/>
             
           </Switch>

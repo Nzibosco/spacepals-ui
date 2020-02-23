@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {Redirect} from 'react-router';
 import {ManagerDashboard} from './managers/ManagerDashboard';
 import {DashboardComponent} from './regular-user/DashboardComponent';
 
@@ -27,17 +27,33 @@ export class Dashboard extends React.Component<IDashboardProps, IDashboardState>
     }
 
 render(){
-    return(
-        <>
+    // return(
+    //     <>
 
-            {
-                this.props.currentUser === "basic_user" ? 
-                <DashboardComponent/> :
-                <ManagerDashboard/>
-            }
+if(!this.state.role) {
+            return(
+                <Redirect to='/home'/>
+            )
+        }
+        if(this.state.role == 'FLIGHT_MANAGER') {
+            return(
+                <Redirect to='/mandash'/> 
+            )
+        }
+        else {
+            return (
+                <Redirect to='/usedash'/>
+            )
+        }
 
-        </>
-    )
+    //         {
+    //              this.props.currentUser === "basic_user" ? 
+    //              <DashboardComponent/> :
+    //              <ManagerDashboard/>
+    //          }
+
+    //      </>
+    // )
 }
 
 
