@@ -15,7 +15,7 @@ export class HomeComponent extends React.Component {
         return (
             // <div>
                 // <Navbar/>
-                <div>
+                <div style={{paddingTop: "30px"}}>
                     <div className = "row" style = {{margin: "0, auto", textAlign: "center", height: "100%"}}>
                         <div className="container col-12">
                             <div className="jumbotron text-center" style={{
@@ -37,13 +37,15 @@ export class HomeComponent extends React.Component {
                         </div>
                     </div>
                     <div className = "row" style= {{paddingTop: "3%"}}>
-                        <div className = "card" style = {{borderRadius: "25%", borderStyle: "solid", background: "inherit",
+                        <div className="col-12">
+                        <div className = "card card-primary" style = {{borderRadius: "25%", borderStyle: "solid",background: "blue",
                         width: "50%", margin: "auto", borderColor: "white", color: "white"
                         }}>
-                            <div className = "card-body text-center">
+                            <div className = "card-body card-primary text-center">
                             <p className="btn btn-primary"><Link to= "/login" style = {{color:"white"}} >Login</Link></p>
-                            <h4>New user? Click <Link to='/register'>Register</Link> here to register</h4>
+                            <h4>New user? Click <Link to='/register' style={{color:"red"}}>here</Link> to register</h4>
                             </div>
+                        </div>
                         </div>
                     </div>
                     

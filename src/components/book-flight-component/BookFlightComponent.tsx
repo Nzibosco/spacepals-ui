@@ -33,7 +33,7 @@ export class BookFlightComponent extends React.Component<IBookFlightProps, IBook
             selectedPlanet: '',
             flights: [],
             booked: '',
-            selectedFlight: 0, 
+            selectedFlight: 0,
             paid: false,
             redirect: false,
             cardNumber: 0,
@@ -91,56 +91,59 @@ export class BookFlightComponent extends React.Component<IBookFlightProps, IBook
             )
     }
 
-   id:any;
+    id: any;
 
     bookFlight = () => {
-        // this.setPaid();
-        if(this.state.paid){
-            Axios.put('http://projecttwodo-env.fryh9swbjr.us-east-2.elasticbeanstalk.com/flights/' + this.state.selectedFlight)
-            .then(res => {
-                if(res.status === 200){
-                console.log(res);
-                this.setState({ booked: "Booking successful ..... navigating back to dashboard" });
-                this.id = setTimeout(() => this.setState({ redirect: true }), 2000)
-            } else{
-                this.setState({ booked: "Booking failed. Please try again" });
-            }           
-            }).catch(err =>{
-                console.log(err);
-                this.setState({ booked: "Booking failed. Please try again" });
-            }
-            )
-        }      
+        let flight = {
+            id: this.state.selectedFlight
+        }
+        if (this.state.paid) {
+            // Axios.put('http://projecttwodo-env.fryh9swbjr.us-east-2.elasticbeanstalk.com/flights', flight)
+            Axios.put("http://projecttwodo-env.fryh9swbjr.us-east-2.elasticbeanstalk.com/flights/book/" + this.state.selectedFlight)
+                .then(res => {
+                    if (res.status === 200) {
+                        console.log(res);
+                        this.setState({ booked: "Booking successful ..... navigating back to dashboard" });
+                        this.id = setTimeout(() => this.setState({ redirect: true }), 2000)
+                    } else {
+                        this.setState({ booked: "Booking failed. Please try again" });
+                    }
+                }).catch(err => {
+                    console.log(err);
+                    this.setState({ booked: "Booking failed. Please try again" });
+                }
+                )
+        }
     }
 
-    componentWillMount =() =>{
+    componentWillMount = () => {
         clearTimeout(this.id)
     }
 
-    handleChange = (event:any) => {
-        const {name, value}= event.target
+    handleChange = (event: any) => {
+        const { name, value } = event.target
         this.setState({
             ...this.state,
             [name]: value
         })
     }
 
-    setPaid = () =>{
-        if(this.state.cardName.trim() === '' || this.state.cardName.trim() === null){
-        this.setState({invalidPayment: "Payment failed. Try again"})
-        }else
-        if(this.state.cardName.length < 35 && this.state.cardNumber.toString.length < 12 && this.state.code.toString.length <4){
-            this.setState({
-                paid: true,
-                invalidPayment: "Payment Successful",
+    setPaid = () => {
+        if (this.state.cardName.trim() === '' || this.state.cardName.trim() === null) {
+            this.setState({ invalidPayment: "Payment failed. Try again" })
+        } else
+            if (this.state.cardName.length < 35 && this.state.cardNumber.toString.length < 12 && this.state.code.toString.length < 4) {
+                this.setState({
+                    paid: true,
+                    invalidPayment: "Payment Successful",
 
-                // clear form data
-                cardNumber: 0,
-                cardName:'',
-                code: 0
-            })
-                     
-        }
+                    // clear form data
+                    cardNumber: 0,
+                    cardName: '',
+                    code: 0
+                })
+
+            }
     }
 
     displayFlights = () => {
@@ -257,10 +260,10 @@ export class BookFlightComponent extends React.Component<IBookFlightProps, IBook
                                     onChange={this.handleChange} />
                             </Col>
                         </FormGroup>
-                        <Button onClick={this.setPaid} disabled = 
-                        {!(this.state.selectedFlight && this.state.cardName
-                        && this.state.cardNumber && this.state.code)}>Pay</Button>
-                        <br/>
+                        <Button onClick={this.setPaid} disabled=
+                            {!(this.state.selectedFlight && this.state.cardName
+                                && this.state.cardNumber && this.state.code)}>Pay</Button>
+                        <br />
                         <p>{this.state.invalidPayment}</p>
                     </Form>
 
@@ -273,8 +276,8 @@ export class BookFlightComponent extends React.Component<IBookFlightProps, IBook
 
     render() {
 
-        if(this.state.redirect){
-            return <Redirect to = "/dashboard"/>
+        if (this.state.redirect) {
+            return <Redirect to="/dashboard" />
         }
 
 
@@ -294,14 +297,14 @@ export class BookFlightComponent extends React.Component<IBookFlightProps, IBook
 
                     {this.state.selectedPlanet != null ?
                         <div id="flights">
-                            
+
                             {this.displayFlights()}
                             <br />
                             {this.payment()}
                             <br />
                             <br />
-                            <Button color="primary" onClick={this.bookFlight} disabled ={!this.state.paid}>Book</Button>
-                            <br/>
+                            <Button color="primary" onClick={this.bookFlight} disabled={!this.state.paid}>Book</Button>
+                            <br />
                             <h5 style={{ color: "red" }}>{this.state.booked}</h5>
                             <br />
                             <Link to="/dashboard">Back to dashboard</Link>
