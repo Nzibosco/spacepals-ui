@@ -11,12 +11,12 @@ interface IDashboardProps{
 
 }
 
-export class DashboardComponent extends React.Component<IDashboardState, IDashboardProps>{
+export class DashboardComponent extends React.Component<any>{
 
     constructor(props:any){
         super(props)
         this.state = {
-            currentUser: null
+            //currentUser: null
         }
     }
 
@@ -40,7 +40,13 @@ export class DashboardComponent extends React.Component<IDashboardState, IDashbo
                         <h5 style = {{borderStyle: "solid", borderColor: "violet", borderRadius: "25px",backgroundColor:"black"}}><Link to="/book">Book a flight</Link></h5>
                         {/* <h5 style = {{borderStyle: "solid", borderColor: "violet", borderRadius: "25px",}}>View your flights history</h5> */}
                         <h5 style = {{borderStyle: "solid", borderColor: "violet", borderRadius: "25px",backgroundColor:"black"}}><Link to ="/planet">Facts about planets</Link></h5>
-                        <h5 style = {{borderStyle: "solid", borderColor: "violet", borderRadius: "25px",backgroundColor:"black"}}><Link to="/registerCompany">Open a business account</Link></h5>
+                        {
+                            this.props.currentUser.role === "BASIC_USER"? 
+                            <h5 style = {{borderStyle: "solid", borderColor: "violet", borderRadius: "25px",backgroundColor:"black"}}><Link to="/registerCompany">Open a business account</Link></h5>
+                            : ''
+                        }
+                       
+
                     </div>
                 </div>
                 <div className = "col-8">
