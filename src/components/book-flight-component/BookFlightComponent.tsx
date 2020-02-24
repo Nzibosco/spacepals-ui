@@ -173,8 +173,9 @@ export class BookFlightComponent extends React.Component<IBookFlightProps, IBook
                                 
                                 this.state.flights.length > 0 ?
                                     this.state.flights.filter((flight: any, i: any) => {
-                                        
+                                        if(flight.destination != null)
                                         return flight.destination.planetName === this.state.selectedPlanet
+
                                     }).map((flight: any, i: any) => {
                                         
                                         return (

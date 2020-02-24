@@ -95,8 +95,17 @@ export class ViewAllFlights extends React.Component<IFlightProps, IFlightState> 
                                                 <td>${flight.cost}</td>
                                                 <td>{flight.availableSeats}</td>
                                                 <td>{flight.status}</td>
-                                                <td>{flight.departure_planet_id}</td>
-                                                <td>{flight.destination_planet_id}</td>
+                                                {
+                                                    flight.departure != null ?
+                                                    <td>{flight.departure.planetName}</td>
+                                                    : <p>N/A</p>
+                                                }
+                                                {
+                                                    flight.destination != null ?
+                                                    <td>{flight.destination.planetName}</td>
+                                                    : <p>N/A</p>
+                                                }
+                                                {/* <td>{flight.destination_planet_id}</td> */}
                                             </tr>
                                         )
                                     })
