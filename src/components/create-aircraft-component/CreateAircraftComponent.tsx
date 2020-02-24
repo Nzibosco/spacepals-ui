@@ -164,6 +164,7 @@ export class CreateAircraftComponent extends React.Component<ICreateAircraftProp
                                 <Button color="primary">Create Ship</Button>
                             </Form>
                             <p>{this.state.successMessage}</p>
+                            <p>size: {this.state.size}</p>
                         </div>
                     </div>
                 </div>
