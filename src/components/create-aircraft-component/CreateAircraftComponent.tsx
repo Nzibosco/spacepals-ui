@@ -99,10 +99,11 @@ export class CreateAircraftComponent extends React.Component<ICreateAircraftProp
                         margin: "10% 30%"
                     }}>
                         <div style={{
-                            background: "inherit",
+                            background: "dark",
                             outlineWidth: "2px",
                             outlineColor: "black",
-                            color: "white"
+                            color: "white",
+                            padding: "20px",
                         }}>
                             <h1>Create your Ship</h1>
                             <br></br>
