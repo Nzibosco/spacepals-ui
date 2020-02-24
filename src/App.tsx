@@ -12,7 +12,7 @@ import {Register} from './components/register/Register'
 import NavbarComponent from './utils/navbar/NavbarContainer';
 import  DashboardComponent  from './components/dashboard-component/regular-user/DashboardContainer';
 import { RegisterCompanyComponent } from './components/register-company-component/RegisterCompanyComponent';
-import { CreateAircraftComponent } from './components/create-aircraft-component/CreateAircraftComponent';
+import  CreateAircraftComponent  from './components/create-aircraft-component/CreateAircraftContainer';
 import CreateFlightComponent from './components/create-flight-component/CreateFlightContainer';
 import LogoutComponent  from './components/logout-component/LogoutContainer';
 import { BookFlightComponent } from './components/book-flight-component/BookFlightComponent';
