@@ -2,6 +2,7 @@ import React, { SyntheticEvent } from 'react';
 import { Table, Navbar, Form, Button } from 'reactstrap';
 import axios from 'axios';
 import { getFlights } from '../../remote/get-flights/get-all-flights';
+import Axios from 'axios';
 
 interface IFlightState {
     //body: any
@@ -21,7 +22,7 @@ export class ViewAllFlights extends React.Component<IFlightProps, IFlightState> 
         this.state = {
             //body: null,
             check: "",
-            flights: null
+            flights: []
 
         };
     }
@@ -45,16 +46,24 @@ export class ViewAllFlights extends React.Component<IFlightProps, IFlightState> 
     //     }
 
     async componentDidMount() {
-        let body1 = await getFlights()
-        this.setState({
-            ...this.state,
-            flights: body1
+        // let body1 = await getFlights()
+        // console.log(body1);
+        Axios.get('http://projecttwodo-env.fryh9swbjr.us-east-2.elasticbeanstalk.com/flights').then((res) => {
+            console.log(res.data);
+            this.setState({
+                ...this.state,
+                flights: res.data
+        }
+        )
+        // this.setState({
+        //     ...this.state,
+        //     flights: body1
             //body: body1
         })
     }
 
     displayFlights = () => {
-        if(this.state.flights){
+        if(this.state.flights.length != 0){
             if (this.state.flights.length > 0) {
                 return (
                     <div style={{ overflowX: "auto" ,
@@ -86,8 +95,17 @@ export class ViewAllFlights extends React.Component<IFlightProps, IFlightState> 
                                                 <td>${flight.cost}</td>
                                                 <td>{flight.availableSeats}</td>
                                                 <td>{flight.status}</td>
-                                                <td>{flight.departure_planet_id}</td>
-                                                <td>{flight.destination_planet_id}</td>
+                                                {
+                                                    flight.departure != null ?
+                                                    <td>{flight.departure.planetName}</td>
+                                                    : <p>N/A</p>
+                                                }
+                                                {
+                                                    flight.destination != null ?
+                                                    <td>{flight.destination.planetName}</td>
+                                                    : <p>N/A</p>
+                                                }
+                                                {/* <td>{flight.destination_planet_id}</td> */}
                                             </tr>
                                         )
                                     })

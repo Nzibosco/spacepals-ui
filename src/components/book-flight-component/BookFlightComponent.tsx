@@ -46,6 +46,7 @@ export class BookFlightComponent extends React.Component<IBookFlightProps, IBook
     }
 
     async componentDidMount() {
+        this.getFlights();
         Axios.get('http://projecttwodo-env.fryh9swbjr.us-east-2.elasticbeanstalk.com/planets')
             .then(res => {
                 console.log(res.data)
@@ -56,7 +57,7 @@ export class BookFlightComponent extends React.Component<IBookFlightProps, IBook
             }).catch(err => console.log(err)
             )
 
-        this.getFlights()
+        
     }
 
     updateSelection = (event: any) => {
@@ -169,10 +170,17 @@ export class BookFlightComponent extends React.Component<IBookFlightProps, IBook
                             </thead>
                             <tbody>
                                 {
+                                
+                                this.state.flights.length > 0 ?
                                     this.state.flights.filter((flight: any, i: any) => {
+                                        if(flight.destination != null)
                                         return flight.destination.planetName === this.state.selectedPlanet
+
                                     }).map((flight: any, i: any) => {
+                                        
                                         return (
+
+                                            flight?
                                             <tr id={i}>
                                                 <th scope="row">
                                                     <input type="radio" name="flight" value={flight.id} onClick={this.setChosenFlight}></input>
@@ -185,8 +193,11 @@ export class BookFlightComponent extends React.Component<IBookFlightProps, IBook
                                                 <td>{flight.departure.planetName}</td>
                                                 <td>{flight.destination.planetName}</td>
                                             </tr>
+                                            :
+                                            ''
                                         )
                                     })
+                                    : ''
                                 }
                             </tbody>
                         </table>
