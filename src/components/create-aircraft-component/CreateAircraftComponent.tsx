@@ -44,13 +44,14 @@ export class CreateAircraftComponent extends React.Component<ICreateAircraftProp
 
     submitShip = (event: SyntheticEvent) => {
         event.preventDefault()
-        let aircraft = {
-            name: this.state.name,
-            capacity: this.state.size
-        }
+        // let aircraft = {
+        //     name: this.state.name,
+        //     capacity: this.state.size
+        // }
         let shipdto = {
-            id: this.state.cid,
-            aircraft: aircraft
+            name: this.state.name,
+            capacity: this.state.size,
+            companyId: this.state.cid
         }
         console.log(shipdto)
         Axios.post('http://projecttwodo-env.fryh9swbjr.us-east-2.elasticbeanstalk.com/aircrafts', shipdto).then(res => {
