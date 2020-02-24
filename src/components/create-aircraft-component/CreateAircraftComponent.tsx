@@ -3,13 +3,20 @@ import { Form, FormGroup, Label, Col, Input, Button } from 'reactstrap';
 import Axios from 'axios';
 import { Redirect } from 'react-router';
 
-export class CreateAircraftComponent extends React.Component<any, any> {
+
+interface ICreateAircraftProps {
+    currentUser: any
+}
+
+export class CreateAircraftComponent extends React.Component<ICreateAircraftProps, any> {
     constructor(props: any) {
         super(props)
         this.state = {
             name: '',
             size: '',
-            cid: 0
+            cid: 0,
+            successMessage: '',
+            redirect: false
         }
 
     }
@@ -47,24 +54,41 @@ export class CreateAircraftComponent extends React.Component<any, any> {
         }
         console.log(shipdto)
         Axios.post('http://projecttwodo-env.fryh9swbjr.us-east-2.elasticbeanstalk.com/aircrafts', shipdto).then(res => {
-            console.log(res)
+            console.log(res);
+            this.setState({
+                ...this.state,
+                successMessage: 'Ship added successfully',
+                redirect: true,
+                name: '',
+                size: '',
+                cid: 0
+            })
+
+        }).catch(err => {
+            console.log(err);
+
+            this.setState({
+                ...this.state,
+                successMessage: 'Failed to add spaceship. Try again'
+            })
         })
     }
 
     companiesDisplay = () => {
-        if(this.props.currentuser.companies.length){
-            this.props.currentUser.companies.map((comp:any) => {
-                return <option key={comp.id} value={comp.name}>{comp.name}</option>
+        //if (this.props.currentUser.companies.length) {
+            this.props.currentUser.companies.map((comp: any) => {
+                return <option key={comp.id} value={comp.id}>{comp.name}</option>
+                //console.log(comp.name)
+                
             })
-        } else{
-            return(
-                <option value = "">No companies found</option>
-            )
-        }
+        // }else{
+        //     return <option>..........</option>
+        // }
     }
-    
+
 
     render() {
+        if (this.props.currentUser === null) return <Redirect to="/" />
         if (this.props.currentUser.companies.length) {
 
             return (
@@ -106,31 +130,38 @@ export class CreateAircraftComponent extends React.Component<any, any> {
                                             value={this.state.cid}
                                             onChange={this.updateID} />
                                             <Label for="exampleDeparture" sm={2}>Departing</Label> */}
-                            <Col sm={10}>
-                                <select onChange={this.updateID}>
-                                    {this.companiesDisplay()}
-                                </select>
-                            </Col>
+                                    <Col sm={10}>
+                                        <select onChange={this.updateID}>
+                                            <option>Select company ...</option>
+                                            {
+                                                this.props.currentUser.companies.map((comp: any) => {
+                                                    return <option key={comp.id} value={comp.id}>{comp.name}</option>
+                                                    //console.log(comp.name)
+                                                    
+                                                })
+                                            }
+                                        </select>
+                                    </Col>
                                     {/* </Col> */}
                                 </FormGroup>
                                 <FormGroup row>
-                                    <Label for="exampleSize" sm={2}>Capacity</Label>
+                                    <Label for="size" sm={2}>Capacity</Label>
                                     <Col sm={10}>
                                         <Input required
                                             type="select"
-                                            name="select"
+                                            name="size"
                                             id="exampleSelect"
                                             value={this.state.size}
                                             onChange={this.updateSize} >
-                                            <option >SMALL</option>
-                                            <option>MEDIUM</option>
-                                            <option>LARGE</option>
+                                            <option value = "SMALL">SMALL</option>
+                                            <option value = "MEDIUM">MEDIUM</option>
+                                            <option value = "LARGE">LARGE</option>
                                         </Input>
                                     </Col>
                                 </FormGroup>
                                 <Button color="primary">Create Ship</Button>
                             </Form>
-                            <p>{this.props.loginMessage}</p>
+                            <p>{this.state.successMessage}</p>
                         </div>
                     </div>
                 </div>
