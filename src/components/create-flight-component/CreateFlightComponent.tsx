@@ -9,7 +9,9 @@ interface newFlightState {
     selectedDestId: any,
     selectedDeptId: any,
     aircraftId: any,
-    cost: any
+    cost: any,
+    redirect: boolean,
+    successMessage: string
 }
 interface newFlightProps {
     currentUser: any
@@ -24,6 +26,8 @@ export class CreateFlightComponent extends React.Component<newFlightProps, newFl
             selectedDeptId: '',    //departure
             selectedDestId: '',    //destination
             cost: '',     //cost
+            redirect: false,
+            successMessage: ''
         }
     }
     updateAircraftId = (event: any) => {
@@ -83,9 +87,20 @@ export class CreateFlightComponent extends React.Component<newFlightProps, newFl
         console.log(flightdto)
         Axios.post('http://projecttwodo-env.fryh9swbjr.us-east-2.elasticbeanstalk.com/flights', flightdto).then(res => {
             console.log(res);
+            this.setState({
+                ...this.state,
+                successMessage: "Success!",
+                redirect: true              
+            })
+        }).catch((err)=>{
+            this.setState({
+                ...this.state,
+                successMessage: "Scheduling failed. Please try again"
+            })
         })
     }
     render() {
+        if(this.state.redirect) return <Redirect to = "/dashboard"/>
         if(this.props.currentUser === null) return <Redirect to ="/login"/>
         return (
             <div>
@@ -94,26 +109,15 @@ export class CreateFlightComponent extends React.Component<newFlightProps, newFl
                     margin: "10% 30%"
                 }}>
                     <div style={{
-                        backgroundColor: "inherit",
+                        backgroundColor: "black",
                         outlineWidth: "2px",
-                        outlineColor: "black", color: "white"
+                        outlineColor: "black", color: "white", padding: "20px"
                     }}>
-                        <h1>Welcome, Please Set Your Flight Parameters.</h1>
+                        <h1>Please Set Your Flight Parameters.</h1>
                         <br></br>
                         <br></br>
                         <Form onSubmit={this.submitFlight}>
-                            {/* <FormGroup row>
-                            <Label for="exampleCid" sm={2}>Company ID</Label>
-                            <Col sm={10}>
-                                <Input required
-                                    type="number"
-                                    name="cid"
-                                    id="Cid"
-                                    placeholder="put company ID here"
-                                    value={this.state.}
-                                    onChange={this.updateCid} />
-                            </Col>
-                        </FormGroup> */}
+                        
                             <FormGroup row>
                                 <Label for="exampleSid" sm={2}>Select an Aircraft</Label>
                                 <Col sm={10}>
@@ -128,7 +132,7 @@ export class CreateFlightComponent extends React.Component<newFlightProps, newFl
                                 </Col>
                             </FormGroup>
                             <FormGroup row>
-                                <Label for="Departure" sm={2}>Select a Departure Planet</Label>
+                                <Label for="Departure" sm={2}>Departure Planet</Label>
                                 <Col sm={10}>
                                     <select onChange={this.updateSelectedDeptId} required>
                                         <option placeholder="Select Departure Planet ..."></option>
@@ -141,7 +145,7 @@ export class CreateFlightComponent extends React.Component<newFlightProps, newFl
                                 </Col>
                             </FormGroup>
                             <FormGroup row>
-                                <Label for="Destination" sm={2}>Select a Destination Planet</Label>
+                                <Label for="Destination" sm={2}>Destination Planet</Label>
                                 <Col sm={10}>
                                     <select onChange={this.updateSelectedDestId} required>
                                         <option placeholder="Select Destination Planet ..."></option>
@@ -167,9 +171,8 @@ export class CreateFlightComponent extends React.Component<newFlightProps, newFl
                             </FormGroup>
                             <Button color="primary">Create Flight</Button>
                         </Form>
-                        {/* <p>{this.props.loginMessage}</p> */}
+                        <p>{this.state.successMessage}</p>
                     </div>
-                    <p>Aircraft Id:{this.state.aircraftId}  Departure:{this.state.selectedDeptId} Destination:{this.state.selectedDestId}</p>
                 </div>
             </div>
         )
